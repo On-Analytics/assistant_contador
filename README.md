@@ -1,0 +1,122 @@
+# ASSISTANT_CONTADOR
+
+A tax form processing assistant for Colombian tax forms (Formulario 210).
+
+## Overview
+
+This application provides automated processing and analysis of Colombian tax forms, specifically designed for Formulario 210 (2025). It combines a Python backend with a React frontend to provide a comprehensive solution for tax document management.
+
+## Features
+
+- **PDF Processing**: Extract and analyze tax form data from PDF documents
+- **Vision Processing**: Advanced OCR and document analysis capabilities
+- **Excel Integration**: Workbench for spreadsheet data manipulation
+- **Form Validation**: Automated validation of tax form data
+- **Modern UI**: React-based frontend with TypeScript
+
+## Project Structure
+
+```
+ASSISTANT_CONTADOR/
+├── backend/                 # Python backend API
+│   ├── main.py             # FastAPI main application
+│   ├── models.py           # Data models
+│   ├── pdf_utils.py        # PDF processing utilities
+│   ├── vision_processor.py # Computer vision processing
+│   └── temp/               # Temporary file storage
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── App.tsx        # Main application component
+│   │   └── index.css      # Global styles
+│   └── public/            # Static assets
+├── Samples/               # Sample documents and screenshots
+├── docs/                  # Documentation
+└── Formulario_210_2025.pdf # Sample tax form
+```
+
+## Technology Stack
+
+### Backend
+- **Python 3.14**
+- **FastAPI** - Web framework
+- **PDF processing libraries**
+- **Computer vision processing**
+
+### Frontend
+- **React** with TypeScript
+- **Vite** - Build tool
+- **Modern CSS** - Styling
+
+## Getting Started
+
+### Prerequisites
+- Python 3.14+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd ASSISTANT_CONTADOR
+   ```
+
+2. **Backend Setup**
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. **Frontend Setup**
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+### Running the Application
+
+1. **Start the backend server**
+   ```bash
+   cd backend
+   python main.py
+   ```
+
+2. **Start the frontend development server**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+The frontend will typically be available at `http://localhost:5173` and the backend API at `http://localhost:8000`.
+
+## Usage
+
+1. Upload PDF tax forms through the web interface
+2. Use the Excel Workbench for data manipulation
+3. Review processed results and validations
+4. Export processed data as needed
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Add your environment variables here
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For questions or support, please refer to the project documentation or contact the development team.

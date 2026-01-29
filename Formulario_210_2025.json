@@ -1,0 +1,448 @@
+{
+  "documento": {
+    "tipo": "Instructivo Formulario 210",
+    "nombre": "Declaración de Renta y Complementario Personas Naturales y Asimiladas Residentes",
+    "año_gravable": "2023 y siguientes",
+    "pais": "Colombia",
+    "entidad": "DIAN - Dirección de Impuestos y Aduanas Nacionales"
+  },
+  "informacion_general": {
+    "fecha_documento": "2025-01-29",
+    "proposito": "Orientar el diligenciamiento del formulario de declaración de renta para personas naturales residentes y sucesiones ilíquidas"
+  },
+  "secciones_principales": [
+    {
+      "nombre": "Datos del Declarante",
+      "casillas": ["5", "6", "7", "8", "9", "10", "12", "24"],
+      "descripcion": "Información de identificación del contribuyente que debe coincidir con el RUT"
+    },
+    {
+      "nombre": "Patrimonio",
+      "casillas": ["29", "30", "31"],
+      "componentes": [
+        {
+          "casilla": "29",
+          "concepto": "Total patrimonio bruto",
+          "descripcion": "Valor patrimonial de todos los bienes y derechos"
+        },
+        {
+          "casilla": "30",
+          "concepto": "Deudas",
+          "descripcion": "Saldos pendientes de pago a 31 de diciembre"
+        },
+        {
+          "casilla": "31",
+          "concepto": "Total patrimonio líquido",
+          "formula": "29 - 30"
+        }
+      ]
+    },
+    {
+      "nombre": "Cédula General",
+      "subcedulas": [
+        {
+          "nombre": "Rentas de Trabajo",
+          "casillas_principales": ["32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42"],
+          "fields": [
+            {
+              "fieldNumber": "32",
+              "fieldName": "Ingresos brutos por rentas de trabajo",
+              "description": "Total de salarios, honorarios, comisiones, prestaciones sociales, viáticos, gastos de representación y demás pagos laborales",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "33",
+              "fieldName": "Ingresos no constitutivos de renta",
+              "description": "Ingresos que por disposición legal no se consideran renta (aportes obligatorios a salud, pensión, indemnizaciones, etc.)",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "34",
+              "fieldName": "Renta líquida ordinaria rentas de trabajo",
+              "description": "Ingresos brutos menos ingresos no constitutivos de renta (campo 32 - campo 33)",
+              "dataType": "currency",
+              "required": false,
+              "calculation": "32 - 33"
+            },
+            {
+              "fieldNumber": "35",
+              "fieldName": "Aportes obligatorios a salud",
+              "description": "Aportes obligatorios del trabajador al sistema de seguridad social en salud",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "36",
+              "fieldName": "Aportes obligatorios a pensión obligatoria",
+              "description": "Aportes obligatorios del trabajador al sistema de pensiones obligatorias",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "37",
+              "fieldName": "Aportes a fondos de pensiones voluntarias y AFC",
+              "description": "Aportes voluntarios a fondos de pensiones y cuentas AFC (Ahorro para el Fomento de la Construcción)",
+              "dataType": "currency",
+              "required": false,
+              "limit": "Máximo 30% del ingreso laboral o 3.800 UVT"
+            },
+            {
+              "fieldNumber": "38",
+              "fieldName": "Valor de las cesantías e intereses de cesantías",
+              "description": "Cesantías consignadas y sus intereses",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "39",
+              "fieldName": "Gastos de representación",
+              "description": "Gastos de representación exentos (25% según art. 206 E.T.)",
+              "dataType": "currency",
+              "required": false,
+              "limit": "25% del salario"
+            },
+            {
+              "fieldNumber": "40",
+              "fieldName": "Otras rentas exentas",
+              "description": "Otras rentas exentas laborales según artículo 206 del Estatuto Tributario",
+              "dataType": "currency",
+              "required": false
+            },
+            {
+              "fieldNumber": "41",
+              "fieldName": "Total rentas exentas de trabajo",
+              "description": "Suma de todas las rentas exentas de trabajo (campos 35 a 40)",
+              "dataType": "currency",
+              "required": false,
+              "calculation": "SUM(35:40)",
+              "limit": "Máximo 40% del ingreso laboral o 5.040 UVT"
+            },
+            {
+              "fieldNumber": "42",
+              "fieldName": "Renta líquida rentas de trabajo",
+              "description": "Renta líquida ordinaria menos rentas exentas (campo 34 - campo 41)",
+              "dataType": "currency",
+              "required": false,
+              "calculation": "34 - 41"
+            }
+          ],
+          "incluye": [
+            "Salarios",
+            "Prima legal",
+            "Cesantías",
+            "Viáticos",
+            "Bonificaciones",
+            "Emolumentos eclesiásticos"
+          ]
+        },
+        {
+          "nombre": "Rentas de Trabajo No Laboral",
+          "casillas_principales": ["43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57"],
+          "descripcion": "Honorarios y servicios personales sin relación laboral"
+        },
+        {
+          "nombre": "Rentas de Capital",
+          "casillas_principales": ["58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73"],
+          "incluye": [
+            "Intereses y rendimientos financieros",
+            "Arrendamientos",
+            "Regalías y propiedad intelectual"
+          ]
+        },
+        {
+          "nombre": "Rentas No Laborales",
+          "casillas_principales": ["74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90"],
+          "descripcion": "Ingresos no clasificados en otras rentas"
+        }
+      ],
+      "casilla_resumen": {
+        "91": "Renta líquida cédula general",
+        "92": "Rentas exentas y deducciones imputables limitadas",
+        "93": "Renta líquida ordinaria cédula general"
+      }
+    },
+    {
+      "nombre": "Cédula de Pensiones",
+      "casillas_principales": ["99", "100", "101", "102", "103"],
+      "incluye": [
+        "Pensiones de jubilación",
+        "Pensiones de invalidez",
+        "Pensiones de vejez",
+        "Pensiones de sobrevivientes"
+      ]
+    },
+    {
+      "nombre": "Cédula de Dividendos y Participaciones",
+      "casillas_principales": ["104", "105", "106", "107", "108", "109", "110", "111"],
+      "subcedulas": [
+        {
+          "nombre": "Dividendos 2016 y anteriores",
+          "casilla": "104"
+        },
+        {
+          "nombre": "1a Subcédula 2017 y siguientes (num. 3 art. 49)",
+          "casilla": "107"
+        },
+        {
+          "nombre": "2a Subcédula 2017 y siguientes (parágrafo 2 art. 49)",
+          "casilla": "108"
+        },
+        {
+          "nombre": "Dividendos del exterior",
+          "casilla": "109"
+        }
+      ]
+    },
+    {
+      "nombre": "Ganancias Ocasionales",
+      "casillas_principales": ["112", "113", "114", "115"],
+      "incluye": [
+        "Enajenación de activos fijos (más de 2 años)",
+        "Liquidación de sociedades",
+        "Herencias y legados",
+        "Donaciones",
+        "Loterías y rifas"
+      ],
+      "tarifas": {
+        "general": "15%",
+        "loterias_rifas": "20%"
+      }
+    },
+    {
+      "nombre": "Liquidación Privada",
+      "casillas": ["116", "117", "118", "119", "120", "121"],
+      "descripcion": "Cálculo del impuesto según diferentes bases"
+    },
+    {
+      "nombre": "Descuentos Tributarios",
+      "casillas": ["122", "123", "124", "125"],
+      "tipos": [
+        {
+          "casilla": "122",
+          "concepto": "Impuestos pagados en el exterior"
+        },
+        {
+          "casilla": "123",
+          "concepto": "Donaciones",
+          "incluye": [
+            "Inversiones en I+D+i",
+            "Donaciones a entidades sin ánimo de lucro",
+            "Becas por impuestos"
+          ],
+          "limite": "30% del impuesto a cargo"
+        },
+        {
+          "casilla": "124",
+          "concepto": "Dividendos, participaciones y otros"
+        }
+      ]
+    },
+    {
+      "nombre": "Liquidación Final",
+      "casillas": ["126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137"],
+      "componentes": [
+        {
+          "casilla": "129",
+          "concepto": "Total impuesto a cargo"
+        },
+        {
+          "casilla": "130",
+          "concepto": "Anticipo renta año anterior"
+        },
+        {
+          "casilla": "132",
+          "concepto": "Retenciones año gravable"
+        },
+        {
+          "casilla": "133",
+          "concepto": "Anticipo renta año siguiente"
+        },
+        {
+          "casilla": "136",
+          "concepto": "Total saldo a pagar"
+        },
+        {
+          "casilla": "137",
+          "concepto": "Total saldo a favor"
+        }
+      ]
+    }
+  ],
+  "conceptos_importantes": {
+    "rentas_exentas": {
+      "limite_general": "40% de la base, máximo 1.340 UVT anuales",
+      "excepciones_limite": [
+        "Rentas exentas numerales 6, 7, 8 y 9 art. 206 E.T.",
+        "Prima especial y prima de costo de vida (diplomáticos)",
+        "Servicios hoteleros (numerales 3 y 4 art. 207-2)",
+        "Convenios para evitar doble tributación",
+        "Decisión 578 de 2004 CAN"
+      ]
+    },
+    "deducciones_imputables": {
+      "intereses_vivienda": {
+        "limite": "1.200 UVT anuales",
+        "casillas": ["38", "50", "66", "83"]
+      },
+      "medicina_prepagada": {
+        "limite": "16 UVT mensuales"
+      },
+      "dependientes": {
+        "mensual": "10% de la renta, máximo 32 UVT mensuales",
+        "anual_adicional": "72 UVT por dependiente, máximo 4 dependientes"
+      },
+      "GMF": {
+        "porcentaje": "50% del GMF pagado"
+      },
+      "icetex": {
+        "limite": "100 UVT anuales"
+      }
+    },
+    "aportes_voluntarios": {
+      "AFC_FVP_AVC": {
+        "limite": "30% del ingreso laboral/tributario, máximo 3.800 UVT anuales",
+        "permanencia_minima": "10 años"
+      }
+    },
+    "renta_presuntiva": {
+      "tarifa": "0%",
+      "base": "Patrimonio líquido depurado según art. 189 E.T.",
+      "exclusiones": [
+        "Aportes en sociedades nacionales",
+        "Bienes afectados por fuerza mayor",
+        "Bienes en periodo improductivo",
+        "Primeras 19.000 UVT sector agropecuario",
+        "Primeras 8.000 UVT vivienda habitación"
+      ]
+    },
+    "compras_factura_electronica": {
+      "porcentaje": "1% del valor de compras",
+      "limite": "240 UVT anuales",
+      "requisitos": [
+        "Factura electrónica con validación previa",
+        "Pago por medios electrónicos",
+        "No solicitado como costo/deducción previamente"
+      ]
+    }
+  },
+  "tarifas_impuesto": {
+    "personas_naturales": {
+      "tabla_art_241": [
+        {
+          "rango_desde_UVT": 0,
+          "rango_hasta_UVT": 1090,
+          "tarifa_marginal": "0%",
+          "impuesto": "0"
+        },
+        {
+          "rango_desde_UVT": 1090,
+          "rango_hasta_UVT": 1700,
+          "tarifa_marginal": "19%",
+          "impuesto": "(Base - 1090) x 19%"
+        },
+        {
+          "rango_desde_UVT": 1700,
+          "rango_hasta_UVT": 4100,
+          "tarifa_marginal": "28%",
+          "impuesto": "(Base - 1700) x 28% + 116 UVT"
+        },
+        {
+          "rango_desde_UVT": 4100,
+          "rango_hasta_UVT": "En adelante",
+          "tarifa_marginal": "33%",
+          "impuesto": "(Base - 4100) x 33% + 788 UVT"
+        }
+      ]
+    },
+    "dividendos_2017_siguientes": {
+      "subcedula_1_art_49_num_3": [
+        {
+          "rango_desde_UVT": 0,
+          "rango_hasta_UVT": 1090,
+          "descuento": "0%"
+        },
+        {
+          "rango_desde_UVT": 1090,
+          "rango_hasta_UVT": "En adelante",
+          "descuento": "(Base - 1090) x 19%"
+        }
+      ],
+      "subcedula_2_art_49_par_2": {
+        "tarifa": "35%"
+      }
+    },
+    "ganancias_ocasionales": {
+      "general": "15%",
+      "loterias_rifas": "20%"
+    }
+  },
+  "anticipo_renta": {
+    "primer_año": "25% del impuesto neto de renta",
+    "segundo_año": "50% del impuesto neto o promedio 2 años",
+    "tercer_año_y_siguientes": "75% del impuesto neto o promedio 2 años",
+    "descuento": "Retenciones del año gravable"
+  },
+  "beneficio_auditoria": {
+    "años_aplicables": ["2023", "2024", "2025", "2026"],
+    "incremento_35_porciento": {
+      "firmeza": "6 meses"
+    },
+    "incremento_25_porciento": {
+      "firmeza": "12 meses"
+    },
+    "requisitos": [
+      "Presentación oportuna",
+      "Incremento mínimo del impuesto neto",
+      "Pago total en plazos establecidos"
+    ],
+    "exclusiones": [
+      "Beneficiarios de incentivos por ubicación geográfica",
+      "Impuesto neto inferior a 71 UVT"
+    ]
+  },
+  "entidades_controladas_exterior": {
+    "sigla": "ECE",
+    "participacion_minima": "10%",
+    "rentas_pasivas": {
+      "casillas": ["62", "79"],
+      "tratamiento": "Incluir según participación en ECE"
+    }
+  },
+  "convenios_internacionales": {
+    "fundamentacion": "Modelo OCDE y ONU",
+    "objetivo": "Evitar doble tributación y prevenir evasión fiscal",
+    "CAN_decision_578": {
+      "aplicacion": "Servicios en países miembros CAN",
+      "tratamiento": "Gravable solo en país donde se presta servicio"
+    }
+  },
+  "dependientes_economicos": {
+    "categorias": [
+      "Hijos hasta 18 años",
+      "Hijos 18-23 años en educación superior",
+      "Hijos mayores 18 años con dependencia física/psicológica",
+      "Cónyuge o compañero permanente con ingresos < 260 UVT",
+      "Padres y hermanos con ingresos < 260 UVT o dependencia"
+    ],
+    "casilla": "138"
+  },
+  "sanciones": {
+    "minima": "10 UVT",
+    "aplicable": "Presentación extemporánea o corrección"
+  },
+  "aporte_voluntario": {
+    "casilla": "141",
+    "destino": [
+      "Programas sociales reducción pobreza extrema",
+      "Atención personas con discapacidad",
+      "Mejoramiento calidad vida adulto mayor"
+    ],
+    "caracteristicas": [
+      "No genera beneficio tributario",
+      "No genera saldo a favor",
+      "No aplica para sanciones ni intereses"
+    ]
+  }
+}
