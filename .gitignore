@@ -37,6 +37,10 @@ backend/temp/
 # Samples folder
 Samples/
 
+# Notes files
+notes.txt
+form_text.txt
+
 # Node.js / Frontend
 node_modules/
 npm-debug.log*
