@@ -16,7 +16,7 @@ import vision_processor
 load_dotenv()
 
 # Create temp directory if it doesn't exist
-temp_dir = Path("temp")
+temp_dir = Path(__file__).parent / "temp"
 temp_dir.mkdir(exist_ok=True)
 
 app = FastAPI(title="TaxWorkbench API")
@@ -35,7 +35,7 @@ app.add_middleware(
 )
 
 # Mount temp directory to serve images
-app.mount("/temp", StaticFiles(directory="temp"), name="temp")
+app.mount("/temp", StaticFiles(directory=str(temp_dir)), name="temp")
 
 @app.get("/")
 async def root():
@@ -48,15 +48,16 @@ async def health_check():
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):
     doc_id = str(uuid.uuid4())
-    temp_dir = Path("temp") / doc_id
-    temp_dir.mkdir(parents=True, exist_ok=True)
+    temp_dir_path = temp_dir / doc_id
+    temp_dir_path.mkdir(parents=True, exist_ok=True)
     
-    pdf_path = temp_dir / file.filename
+    pdf_path = temp_dir_path / file.filename
     with open(pdf_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
         
     # Convert PDF to images (async, non-blocking)
-    image_paths = await pdf_utils.pdf_to_images_async(str(pdf_path), str(temp_dir / "pages"))
+    pages_dir = temp_dir_path / "pages"
+    image_paths = await pdf_utils.pdf_to_images_async(str(pdf_path), str(pages_dir))
     
     # Process all pages in parallel using asyncio.gather
     page_tasks = [
