@@ -54,6 +54,9 @@ frontend/dist/
 frontend/build/
 frontend/.vite/
 
+# Frontend environment files
+frontend/.env
+
 # IDE
 .vscode/
 .idea/
