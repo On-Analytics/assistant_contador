@@ -23,15 +23,24 @@ ASSISTANT_CONTADOR/
 │   ├── models.py           # Data models
 │   ├── pdf_utils.py        # PDF processing utilities
 │   ├── vision_processor.py # Computer vision processing
-│   └── temp/               # Temporary file storage
+│   ├── requirements.txt    # Python dependencies
+│   └── temp/               # Temporary file storage (gitignored)
 ├── frontend/               # React frontend
 │   ├── src/
 │   │   ├── components/    # React components
+│   │   │   ├── ExcelWorkbench.tsx
+│   │   │   ├── ExtractionSidebar.tsx
+│   │   │   └── PDFCanvas.tsx
 │   │   ├── App.tsx        # Main application component
+│   │   ├── main.tsx       # Entry point
 │   │   └── index.css      # Global styles
-│   └── public/            # Static assets
-├── Samples/               # Sample documents and screenshots
+│   ├── public/            # Static assets
+│   ├── package.json       # Node.js dependencies
+│   └── vite.config.ts     # Vite configuration
+├── Samples/               # Sample documents and screenshots (gitignored)
 ├── docs/                  # Documentation
+├── .gitignore             # Git ignore rules
+├── README.md              # This file
 └── Formulario_210_2025.pdf # Sample tax form
 ```
 
@@ -47,6 +56,20 @@ ASSISTANT_CONTADOR/
 - **React** with TypeScript
 - **Vite** - Build tool
 - **Modern CSS** - Styling
+- **ESLint** - Code linting
+
+## Repository
+
+This project is hosted on GitHub: https://github.com/On-Analytics/assistant_contador
+
+## Git Ignore
+
+The following files and directories are excluded from version control:
+- `Samples/` - Sample documents and screenshots
+- `notes.txt`, `form_text.txt` - Local notes files
+- `backend/temp/` - Temporary file storage
+- `node_modules/`, `__pycache__/` - Dependency and build directories
+- `.env*` - Environment variables
 
 ## Getting Started
 
