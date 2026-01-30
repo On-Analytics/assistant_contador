@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 
 export interface Chip {
@@ -22,7 +21,7 @@ interface PDFCanvasProps {
     onDragEnd: (chip: Chip, info: PanInfo) => void;
 }
 
-const PDFCanvas: React.FC<PDFCanvasProps> = ({ chips, currentPage, imageUrl, onDragStart, onDragEnd }) => {
+const PDFCanvas: React.FC<PDFCanvasProps> = ({ chips: _chips, currentPage: _currentPage, imageUrl, onDragStart: _onDragStart, onDragEnd: _onDragEnd }) => {
     const [zoom, setZoom] = useState(1);
 
     const handleZoomIn = () => setZoom(prev => Math.min(prev + 0.25, 3));

@@ -132,7 +132,7 @@ const ExcelWorkbench: React.FC<ExcelWorkbenchProps> = ({ activeTab, buckets, isD
                     </tr>
                 </thead>
                 <tbody>
-                    {buckets.map((bucket, index) => {
+                    {buckets.map((bucket, _index) => {
                         // Check if this is line 32 in Laboral section (should be highlighted)
                         const isMainIncome = activeTab === 'Laboral' && bucket.id === '32';
                         const isSuggested = suggestedBuckets.includes(bucket.id);

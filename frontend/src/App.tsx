@@ -5,7 +5,7 @@ import type { PanInfo } from 'framer-motion'
 import './App.css'
 import type { Chip } from './components/PDFCanvas'
 import ExcelWorkbench from './components/ExcelWorkbench'
-import { Upload, CheckCircle, FileSpreadsheet } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import axios from 'axios'
 
 interface BucketSource {
