@@ -15,6 +15,10 @@ import vision_processor
 # Load environment variables
 load_dotenv()
 
+# Create temp directory if it doesn't exist
+temp_dir = Path("temp")
+temp_dir.mkdir(exist_ok=True)
+
 app = FastAPI(title="TaxWorkbench API")
 
 # Configuration
