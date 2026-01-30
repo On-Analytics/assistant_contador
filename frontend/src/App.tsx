@@ -427,7 +427,7 @@ function App() {
         const formData = new FormData()
         formData.append('file', file)
         
-        const response = await axios.post('http://localhost:8000/upload', formData, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/upload`, formData, {
           onUploadProgress: (progressEvent) => {
             if (progressEvent.total) {
               const fileProgress = (progressEvent.loaded / progressEvent.total) * 100

@@ -140,6 +140,52 @@ Create a `.env` file in the root directory:
 
 This project is licensed under the MIT License.
 
+## Deployment
+
+### Backend (Render)
+
+1. **Create a new Web Service on Render**
+   - Connect your GitHub repository
+   - Set build command: `pip install -r requirements.txt`
+   - Set start command: `python main.py`
+   - Add environment variables:
+     ```
+     API_BASE_URL=https://your-app-name.onrender.com
+     ALLOWED_ORIGINS=https://your-app-name.netlify.app
+     OPENAI_API_KEY=your_openai_api_key
+     ```
+
+2. **Health Check**
+   - Render will automatically use the `/health` endpoint for health checks
+
+### Frontend (Netlify)
+
+1. **Create a new site on Netlify**
+   - Connect your GitHub repository
+   - Set build command: `cd frontend && npm run build`
+   - Set publish directory: `frontend/dist`
+   - Add environment variable:
+     ```
+     VITE_API_URL=https://your-app-name.onrender.com
+     ```
+
+2. **Configuration**
+   - The `netlify.toml` file handles SPA routing automatically
+
+### Environment Variables
+
+Copy the example files and configure them:
+
+**Backend:**
+```bash
+cp backend/.env.example backend/.env
+```
+
+**Frontend:**
+```bash
+cp frontend/.env.example frontend/.env
+```
+
 ## Support
 
 For questions or support, please refer to the project documentation or contact the development team.

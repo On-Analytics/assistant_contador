@@ -8,15 +8,23 @@ import shutil
 import uuid
 import asyncio
 from pathlib import Path
+from dotenv import load_dotenv
 import pdf_utils
 import vision_processor
 
+# Load environment variables
+load_dotenv()
+
 app = FastAPI(title="TaxWorkbench API")
+
+# Configuration
+API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
 
 # Enable CORS for frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -28,6 +36,10 @@ app.mount("/temp", StaticFiles(directory="temp"), name="temp")
 @app.get("/")
 async def root():
     return {"message": "Welcome to TaxWorkbench API"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "TaxWorkbench API"}
 
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):
@@ -64,7 +76,7 @@ async def upload_document(file: UploadFile = File(...)):
         "filename": file.filename,
         "status": "processed",
         "chips": all_chips,
-        "image_urls": [f"http://localhost:8000/temp/{doc_id}/pages/page_{i+1}.png" for i in range(len(image_paths))]
+        "image_urls": [f"{API_BASE_URL}/temp/{doc_id}/pages/page_{i+1}.png" for i in range(len(image_paths))]
     }
 
 if __name__ == "__main__":
