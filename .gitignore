@@ -30,6 +30,7 @@ ENV/
 .env
 .env.local
 .env.*.local
+backend/.env
 
 # Backend temp files
 backend/temp/
