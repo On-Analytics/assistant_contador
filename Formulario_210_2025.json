@@ -1,448 +1,2219 @@
 {
-  "documento": {
-    "tipo": "Instructivo Formulario 210",
-    "nombre": "Declaración de Renta y Complementario Personas Naturales y Asimiladas Residentes",
-    "año_gravable": "2023 y siguientes",
+  "metadata": {
+    "documento": "INSTRUCTIVO PARA EL DILIGENCIAMIENTO DE LA DECLARACIÓN DE RENTA Y COMPLEMENTARIO",
+    "formulario": "210",
+    "aplicable_a": "PERSONAS NATURALES Y ASIMILADAS RESIDENTES Y SUCESIONES ILÍQUIDAS DE CAUSANTES RESIDENTES",
+    "años_gravables": "2023 Y SIGUIENTES",
+    "entidad_emisora": "DIAN - Dirección de Impuestos y Aduanas Nacionales",
     "pais": "Colombia",
-    "entidad": "DIAN - Dirección de Impuestos y Aduanas Nacionales"
+    "paginas": 19,
+    "fecha_referencia": "29 de enero de 2026"
   },
-  "informacion_general": {
-    "fecha_documento": "2025-01-29",
-    "proposito": "Orientar el diligenciamiento del formulario de declaración de renta para personas naturales residentes y sucesiones ilíquidas"
-  },
-  "secciones_principales": [
-    {
-      "nombre": "Datos del Declarante",
-      "casillas": ["5", "6", "7", "8", "9", "10", "12", "24"],
-      "descripcion": "Información de identificación del contribuyente que debe coincidir con el RUT"
-    },
-    {
-      "nombre": "Patrimonio",
-      "casillas": ["29", "30", "31"],
-      "componentes": [
-        {
-          "casilla": "29",
-          "concepto": "Total patrimonio bruto",
-          "descripcion": "Valor patrimonial de todos los bienes y derechos"
-        },
-        {
-          "casilla": "30",
-          "concepto": "Deudas",
-          "descripcion": "Saldos pendientes de pago a 31 de diciembre"
-        },
-        {
-          "casilla": "31",
-          "concepto": "Total patrimonio líquido",
-          "formula": "29 - 30"
-        }
-      ]
-    },
-    {
-      "nombre": "Cédula General",
-      "subcedulas": [
-        {
-          "nombre": "Rentas de Trabajo",
-          "casillas_principales": ["32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42"],
-          "fields": [
-            {
-              "fieldNumber": "32",
-              "fieldName": "Ingresos brutos por rentas de trabajo",
-              "description": "Total de salarios, honorarios, comisiones, prestaciones sociales, viáticos, gastos de representación y demás pagos laborales",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "33",
-              "fieldName": "Ingresos no constitutivos de renta",
-              "description": "Ingresos que por disposición legal no se consideran renta (aportes obligatorios a salud, pensión, indemnizaciones, etc.)",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "34",
-              "fieldName": "Renta líquida ordinaria rentas de trabajo",
-              "description": "Ingresos brutos menos ingresos no constitutivos de renta (campo 32 - campo 33)",
-              "dataType": "currency",
-              "required": false,
-              "calculation": "32 - 33"
-            },
-            {
-              "fieldNumber": "35",
-              "fieldName": "Aportes obligatorios a salud",
-              "description": "Aportes obligatorios del trabajador al sistema de seguridad social en salud",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "36",
-              "fieldName": "Aportes obligatorios a pensión obligatoria",
-              "description": "Aportes obligatorios del trabajador al sistema de pensiones obligatorias",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "37",
-              "fieldName": "Aportes a fondos de pensiones voluntarias y AFC",
-              "description": "Aportes voluntarios a fondos de pensiones y cuentas AFC (Ahorro para el Fomento de la Construcción)",
-              "dataType": "currency",
-              "required": false,
-              "limit": "Máximo 30% del ingreso laboral o 3.800 UVT"
-            },
-            {
-              "fieldNumber": "38",
-              "fieldName": "Valor de las cesantías e intereses de cesantías",
-              "description": "Cesantías consignadas y sus intereses",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "39",
-              "fieldName": "Gastos de representación",
-              "description": "Gastos de representación exentos (25% según art. 206 E.T.)",
-              "dataType": "currency",
-              "required": false,
-              "limit": "25% del salario"
-            },
-            {
-              "fieldNumber": "40",
-              "fieldName": "Otras rentas exentas",
-              "description": "Otras rentas exentas laborales según artículo 206 del Estatuto Tributario",
-              "dataType": "currency",
-              "required": false
-            },
-            {
-              "fieldNumber": "41",
-              "fieldName": "Total rentas exentas de trabajo",
-              "description": "Suma de todas las rentas exentas de trabajo (campos 35 a 40)",
-              "dataType": "currency",
-              "required": false,
-              "calculation": "SUM(35:40)",
-              "limit": "Máximo 40% del ingreso laboral o 5.040 UVT"
-            },
-            {
-              "fieldNumber": "42",
-              "fieldName": "Renta líquida rentas de trabajo",
-              "description": "Renta líquida ordinaria menos rentas exentas (campo 34 - campo 41)",
-              "dataType": "currency",
-              "required": false,
-              "calculation": "34 - 41"
-            }
-          ],
-          "incluye": [
-            "Salarios",
-            "Prima legal",
-            "Cesantías",
-            "Viáticos",
-            "Bonificaciones",
-            "Emolumentos eclesiásticos"
-          ]
-        },
-        {
-          "nombre": "Rentas de Trabajo No Laboral",
-          "casillas_principales": ["43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57"],
-          "descripcion": "Honorarios y servicios personales sin relación laboral"
-        },
-        {
-          "nombre": "Rentas de Capital",
-          "casillas_principales": ["58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73"],
-          "incluye": [
-            "Intereses y rendimientos financieros",
-            "Arrendamientos",
-            "Regalías y propiedad intelectual"
-          ]
-        },
-        {
-          "nombre": "Rentas No Laborales",
-          "casillas_principales": ["74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90"],
-          "descripcion": "Ingresos no clasificados en otras rentas"
-        }
+  "informacion_preliminar": {
+    "advertencia_general": "Este instructivo lo orientará en el diligenciamiento del formulario. Recuerde que estas son orientaciones generales y no eximen de la obligación de aplicar las normas legales y reglamentarias que regulan el Impuesto sobre la renta y su complementario de ganancias ocasionales.",
+    "convenios_internacionales": {
+      "fundamentacion": [
+        "Modelo de convenio de la Organización para la Cooperación y el Desarrollo Económico OCDE",
+        "Lineamientos del modelo de la Organización de las Naciones Unidas ONU",
+        "Circunstancias de la legislación interna colombiana"
       ],
-      "casilla_resumen": {
-        "91": "Renta líquida cédula general",
-        "92": "Rentas exentas y deducciones imputables limitadas",
-        "93": "Renta líquida ordinaria cédula general"
-      }
+      "estructura": "Conservando la estructura básica desarrollada por el modelo OCDE",
+      "finalidad": "Los convenios para evitar la doble tributación y prevenir la evasión y elusión fiscal son acuerdos solemnes entre estados soberanos contratantes que tienen como finalidad distribuir la potestad tributaria entre ellos para evitar que sus residentes estén sometidos a doble imposición",
+      "pregunta_SI_diligenciamiento": "Si obtuvo rentas de países con quien Colombia tiene celebrado un acuerdo para evitar la doble imposición, deberá responder afirmativamente la pregunta que genera el Servicio Informático (en adelante SI) de Diligenciamiento"
     },
-    {
-      "nombre": "Cédula de Pensiones",
-      "casillas_principales": ["99", "100", "101", "102", "103"],
-      "incluye": [
-        "Pensiones de jubilación",
-        "Pensiones de invalidez",
-        "Pensiones de vejez",
-        "Pensiones de sobrevivientes"
-      ]
-    },
-    {
-      "nombre": "Cédula de Dividendos y Participaciones",
-      "casillas_principales": ["104", "105", "106", "107", "108", "109", "110", "111"],
-      "subcedulas": [
-        {
-          "nombre": "Dividendos 2016 y anteriores",
-          "casilla": "104"
-        },
-        {
-          "nombre": "1a Subcédula 2017 y siguientes (num. 3 art. 49)",
-          "casilla": "107"
-        },
-        {
-          "nombre": "2a Subcédula 2017 y siguientes (parágrafo 2 art. 49)",
-          "casilla": "108"
-        },
-        {
-          "nombre": "Dividendos del exterior",
-          "casilla": "109"
-        }
-      ]
-    },
-    {
-      "nombre": "Ganancias Ocasionales",
-      "casillas_principales": ["112", "113", "114", "115"],
-      "incluye": [
-        "Enajenación de activos fijos (más de 2 años)",
-        "Liquidación de sociedades",
-        "Herencias y legados",
-        "Donaciones",
-        "Loterías y rifas"
-      ],
-      "tarifas": {
-        "general": "15%",
-        "loterias_rifas": "20%"
-      }
-    },
-    {
-      "nombre": "Liquidación Privada",
-      "casillas": ["116", "117", "118", "119", "120", "121"],
-      "descripcion": "Cálculo del impuesto según diferentes bases"
-    },
-    {
-      "nombre": "Descuentos Tributarios",
-      "casillas": ["122", "123", "124", "125"],
-      "tipos": [
-        {
-          "casilla": "122",
-          "concepto": "Impuestos pagados en el exterior"
-        },
-        {
-          "casilla": "123",
-          "concepto": "Donaciones",
-          "incluye": [
-            "Inversiones en I+D+i",
-            "Donaciones a entidades sin ánimo de lucro",
-            "Becas por impuestos"
-          ],
-          "limite": "30% del impuesto a cargo"
-        },
-        {
-          "casilla": "124",
-          "concepto": "Dividendos, participaciones y otros"
-        }
-      ]
-    },
-    {
-      "nombre": "Liquidación Final",
-      "casillas": ["126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137"],
-      "componentes": [
-        {
-          "casilla": "129",
-          "concepto": "Total impuesto a cargo"
-        },
-        {
-          "casilla": "130",
-          "concepto": "Anticipo renta año anterior"
-        },
-        {
-          "casilla": "132",
-          "concepto": "Retenciones año gravable"
-        },
-        {
-          "casilla": "133",
-          "concepto": "Anticipo renta año siguiente"
-        },
-        {
-          "casilla": "136",
-          "concepto": "Total saldo a pagar"
-        },
-        {
-          "casilla": "137",
-          "concepto": "Total saldo a favor"
-        }
-      ]
+    "conciliacion_fiscal": {
+      "formato": "Anexo 210, Formato Modelo 2517",
+      "columna_referencia": "VALOR FISCAL",
+      "estructura_calculo": "VALOR CONTABLE, EFECTO CONVERSION, MENOR VALOR FISCAL y MAYOR VALOR FISCAL",
+      "nota": "Las referencias de las casillas al Reporte de conciliación fiscal anexo 210 se entienden efectuadas a la columna VALOR FISCAL, con los ajustes y las operaciones aritméticas realizados conforme a la estructura del formato"
     }
-  ],
-  "conceptos_importantes": {
-    "rentas_exentas": {
-      "limite_general": "40% de la base, máximo 1.340 UVT anuales",
-      "excepciones_limite": [
-        "Rentas exentas numerales 6, 7, 8 y 9 art. 206 E.T.",
-        "Prima especial y prima de costo de vida (diplomáticos)",
-        "Servicios hoteleros (numerales 3 y 4 art. 207-2)",
-        "Convenios para evitar doble tributación",
-        "Decisión 578 de 2004 CAN"
-      ]
+  },
+  "estructura_formulario": {
+    "casilla_1": {
+      "nombre": "Año",
+      "descripcion": "Corresponde al año gravable que está declarando",
+      "tipo": "Dato básico"
     },
-    "deducciones_imputables": {
-      "intereses_vivienda": {
-        "limite": "1.200 UVT anuales",
-        "casillas": ["38", "50", "66", "83"]
+    "casilla_4": {
+      "nombre": "Número de formulario",
+      "descripcion": "Espacio determinado para el número único asignado por la Dirección de Impuestos y Aduanas Nacionales (en adelante DIAN) a cada uno de los formularios",
+      "tipo": "Identificación"
+    }
+  },
+  "datos_del_declarante": {
+    "nota_importante": "Los datos de las casillas 5, 6, 7, 8, 9, 10, 12 y 24 deben coincidir con los datos registrados en la hoja principal del Registro Único Tributario (en adelante RUT)",
+    "casillas_identificacion": {
+      "casilla_5": {
+        "nombre": "No. de Identificación Tributaria",
+        "descripcion": "Corresponde al Número de Identificación Tributaria asignado al contribuyente por la DIAN, sin el dígito de verificación",
+        "fuente_RUT": "Casilla 5 de la hoja principal del RUT",
+        "formato": "Sin dígito de verificación"
       },
-      "medicina_prepagada": {
-        "limite": "16 UVT mensuales"
+      "casilla_6": {
+        "nombre": "DV",
+        "descripcion": "Corresponde al número que en su NIT se encuentra separado, llamado 'Dígito de verificación' (DV)",
+        "fuente_RUT": "Casilla 6 de la hoja principal del RUT"
       },
-      "dependientes": {
-        "mensual": "10% de la renta, máximo 32 UVT mensuales",
-        "anual_adicional": "72 UVT por dependiente, máximo 4 dependientes"
+      "casilla_7": {
+        "nombre": "Primer apellido",
+        "diligenciamiento": "Se diligencia automáticamente",
+        "fuente_RUT": "Casilla 31 de la hoja principal del RUT"
       },
-      "GMF": {
-        "porcentaje": "50% del GMF pagado"
+      "casilla_8": {
+        "nombre": "Segundo apellido",
+        "diligenciamiento": "Se diligencia automáticamente",
+        "fuente_RUT": "Casilla 32 de la hoja principal del RUT"
       },
-      "icetex": {
-        "limite": "100 UVT anuales"
+      "casilla_9": {
+        "nombre": "Primer nombre",
+        "diligenciamiento": "Se diligencia automáticamente",
+        "fuente_RUT": "Casilla 33 de la hoja principal del RUT"
+      },
+      "casilla_10": {
+        "nombre": "Otros nombres",
+        "diligenciamiento": "Se diligencian automáticamente",
+        "fuente_RUT": "Casilla 34 de la hoja principal del RUT"
+      },
+      "casilla_12": {
+        "nombre": "Cód. Dir. seccional",
+        "descripcion": "Se registra el código de la dirección seccional que corresponda al domicilio principal de su actividad o negocio",
+        "fuente_RUT": "Casilla 12 del RUT"
+      },
+      "casilla_24": {
+        "nombre": "Actividad económica principal",
+        "descripcion": "Código que corresponde a la actividad económica que le generó el mayor valor de ingresos en el período gravable a declarar",
+        "fuente_RUT": "Debe corresponder a alguna de las informadas en el RUT, casilla 46, casilla 48 o casilla 50, de la hoja principal",
+        "actualizacion": {
+          "cuando": "Cuando no corresponda a ninguna de las casillas anteriores",
+          "accion": "Actualice este dato en el RUT",
+          "clasificacion": "Nueva clasificación de actividades económicas CIIU, adaptada para Colombia por la DIAN",
+          "resoluciones": [
+            "Resolución No. 000114 del 21 de diciembre de 2020",
+            "Resolución No. 001232 del 16 de septiembre de 2022",
+            "Resolución No. 000086 del 24 de mayo de 2023"
+          ]
+        }
+      }
+    }
+  },
+  "correccion_declaracion": {
+    "titulo": "Si es una corrección indique:",
+    "casilla_25": {
+      "nombre": "Cód.",
+      "descripcion": "Si la declaración es una corrección, el SI de Diligenciamiento registrará",
+      "codigos": {
+        "1": "Si es una corrección a la declaración privada",
+        "2": "Si es una corrección a la corrección generada por la DIAN, con fundamento en el artículo 43 de la Ley 962 del 8 de julio de 2005",
+        "3": "Si es una corrección provocada con ocasión de un acto administrativo"
       }
     },
-    "aportes_voluntarios": {
-      "AFC_FVP_AVC": {
-        "limite": "30% del ingreso laboral/tributario, máximo 3.800 UVT anuales",
-        "permanencia_minima": "10 años"
-      }
+    "casilla_26": {
+      "nombre": "Número de formulario anterior",
+      "descripcion": "Corresponde al número de formulario de la casilla 4 de la declaración objeto de corrección o del acto administrativo que se corrige"
     },
-    "renta_presuntiva": {
-      "tarifa": "0%",
-      "base": "Patrimonio líquido depurado según art. 189 E.T.",
-      "exclusiones": [
-        "Aportes en sociedades nacionales",
-        "Bienes afectados por fuerza mayor",
-        "Bienes en periodo improductivo",
-        "Primeras 19.000 UVT sector agropecuario",
-        "Primeras 8.000 UVT vivienda habitación"
-      ]
-    },
-    "compras_factura_electronica": {
-      "porcentaje": "1% del valor de compras",
-      "limite": "240 UVT anuales",
+    "casilla_27": {
+      "nombre": "Fracción año gravable siguiente",
+      "descripcion": "Si va a presentar declaración por la fracción del año gravable siguiente",
+      "accion": "Seleccione en el SI de Diligenciamiento previo ingreso al formulario, la opción 'Nueva fracción año'"
+    }
+  },
+  "compras_factura_electronica": {
+    "casilla_28": {
+      "nombre": "Uno por ciento (1%) de compras con factura electrónica",
+      "normativa": "Artículo 336 numeral 5 del E.T.",
+      "aplicable": "Personas naturales que declaren ingresos de la cédula general a los que se refiere el artículo 335 del Estatuto Tributario",
+      "porcentaje_deduccion": "1%",
+      "limite_anual_UVT": 240,
+      "nota_limite": "Sin que exceda doscientas cuarenta (240) UVT en el respectivo año gravable",
       "requisitos": [
-        "Factura electrónica con validación previa",
-        "Pago por medios electrónicos",
-        "No solicitado como costo/deducción previamente"
-      ]
-    }
-  },
-  "tarifas_impuesto": {
-    "personas_naturales": {
-      "tabla_art_241": [
         {
-          "rango_desde_UVT": 0,
-          "rango_hasta_UVT": 1090,
-          "tarifa_marginal": "0%",
-          "impuesto": "0"
+          "numero": 1,
+          "descripcion": "Que la adquisición del bien y/o del servicio no haya sido solicitada como costo o deducción en el impuesto sobre la renta, impuesto descontable en el impuesto sobre las ventas – IVA, ingreso no constitutivo de renta ni ganancia ocasional, renta exenta, descuento tributario u otro tipo de beneficio o crédito fiscal"
         },
         {
-          "rango_desde_UVT": 1090,
-          "rango_hasta_UVT": 1700,
-          "tarifa_marginal": "19%",
-          "impuesto": "(Base - 1090) x 19%"
+          "numero": 2,
+          "descripcion": "Que la adquisición del bien y/o del servicio esté soportada con factura electrónica de venta con validación previa, en donde se identifique el adquirente con nombres y apellidos y el número de identificación tributaria – NIT o número de documento de identificación, y con el cumplimiento de todos los demás requisitos exigibles para este sistema de facturación"
         },
         {
-          "rango_desde_UVT": 1700,
-          "rango_hasta_UVT": 4100,
-          "tarifa_marginal": "28%",
-          "impuesto": "(Base - 1700) x 28% + 116 UVT"
+          "numero": 3,
+          "descripcion": "Que la factura electrónica de venta se encuentre pagada a través de tarjeta débito, crédito o cualquier medio electrónico en el cual intervenga una entidad vigilada por la Superintendencia Financiera o quien haga sus veces, dentro del periodo gravable en el cual se solicita la deducción de que trata el numeral 5 del artículo 336 del E.T."
         },
         {
-          "rango_desde_UVT": 4100,
-          "rango_hasta_UVT": "En adelante",
-          "tarifa_marginal": "33%",
-          "impuesto": "(Base - 4100) x 33% + 788 UVT"
-        }
-      ]
-    },
-    "dividendos_2017_siguientes": {
-      "subcedula_1_art_49_num_3": [
-        {
-          "rango_desde_UVT": 0,
-          "rango_hasta_UVT": 1090,
-          "descuento": "0%"
-        },
-        {
-          "rango_desde_UVT": 1090,
-          "rango_hasta_UVT": "En adelante",
-          "descuento": "(Base - 1090) x 19%"
+          "numero": 4,
+          "descripcion": "Que la factura electrónica de venta haya sido expedida por sujetos obligados a expedirla"
         }
       ],
-      "subcedula_2_art_49_par_2": {
-        "tarifa": "35%"
+      "caracteristicas_especiales": [
+        "La deducción no se encuentra sujeta al límite previsto en el numeral 3 del artículo 336 del E.T.",
+        "No se tendrá en cuenta para el cálculo de la retención en la fuente",
+        "No podrá dar lugar a pérdidas"
+      ],
+      "diligenciamiento": {
+        "metodo": "Automático",
+        "fuente": "Valor registrado en la casilla 299 (Compra de bienes y/o servicios con factura electrónica cumpliendo requisitos num. 5 art. 336 E.T.)",
+        "visibilidad": "La casilla 299 es visible al momento del diligenciamiento del formulario",
+        "validacion": "El SI de Diligenciamiento podrá validar de manera automática el valor de las compras de bienes y/o servicios con factura electrónica registrado en la casilla 297 (Valor compras con factura electrónica)"
       }
-    },
-    "ganancias_ocasionales": {
-      "general": "15%",
-      "loterias_rifas": "20%"
     }
   },
-  "anticipo_renta": {
-    "primer_año": "25% del impuesto neto de renta",
-    "segundo_año": "50% del impuesto neto o promedio 2 años",
-    "tercer_año_y_siguientes": "75% del impuesto neto o promedio 2 años",
-    "descuento": "Retenciones del año gravable"
+  "seccion_patrimonio": {
+    "casilla_29": {
+      "nombre": "Total patrimonio bruto",
+      "descripcion": "Registre en esta casilla el total del valor patrimonial de todos los bienes y derechos apreciables en dinero poseídos en el país o en el exterior por el contribuyente al final del periodo fiscal",
+      "items_incluidos": [
+        "Bienes y/o efectivo en moneda extranjera",
+        "Efectivo en moneda nacional",
+        "Saldo en cuentas corrientes y cuentas de ahorros",
+        "Inversiones en moneda nacional",
+        "Inventarios que representen bienes corporales destinados a la venta en el curso normal de los negocios",
+        "Inventarios que se hallen en proceso de producción",
+        "Inventarios que se utilizarán o consumirán en la producción de otros que van a ser vendidos",
+        "Activos biológicos",
+        "Bienes inmuebles (casas, apartamentos, fincas, lotes, locales, oficinas, otros)",
+        "Construcciones en curso",
+        "Vehículos, naves, aeronaves",
+        "Muebles y enseres",
+        "Maquinaria y equipo",
+        "Pozos petroleros, minas",
+        "Good will, know how, patentes, primas, derechos de autor",
+        "Cuentas por cobrar",
+        "Joyas, cuadros y demás derechos reales y personales",
+        "Cupos de taxis",
+        "Criptoactivos"
+      ],
+      "determinacion_valor_patrimonial": {
+        "regla_general": "Para efectos fiscales, determine el valor patrimonial de los activos, conforme a las reglas del E.T., de acuerdo con la naturaleza de los activos",
+        "informacion_contable": {
+          "base": "La información contable es la determinada de acuerdo con los marcos técnicos normativos contables vigentes en Colombia",
+          "estados_financieros_base": "Estados financieros individuales o separados",
+          "excepcion": "Excepto en los casos en los que de acuerdo con las normas fiscales se deba declarar incluyendo información de los negocios o contratos en los cuales se tenga participación",
+          "ejemplo_excepcion": "Como en el caso de los Contratos de Colaboración Empresarial, donde se deberá tomar los estados financieros consolidados o combinados, según el caso"
+        },
+        "activos_moneda_extranjera": {
+          "reconocimiento_inicial": "Los activos en moneda extranjera, se estiman en moneda nacional al momento de su reconocimiento inicial a la tasa representativa del mercado",
+          "abonos_pagos": "Menos los abonos o pagos medidos a la misma tasa representativa del mercado del reconocimiento inicial",
+          "normativa": "De conformidad con lo previsto en los artículos 269, 288 y 291 del E.T.",
+          "determinacion_patrimonio": "Así mismo tenga en cuenta lo dispuesto en los artículos 261 y 267 del E.T., en la determinación del patrimonio bruto y el valor patrimonial de los activos"
+        }
+      },
+      "conciliacion_fiscal": {
+        "formato": "Formato Reporte Conciliación fiscal Anexo 210 (ESF – Patrimonio)",
+        "campo": "Total Activos columna valor fiscal"
+      }
+    },
+    "casilla_30": {
+      "nombre": "Deudas",
+      "descripcion": "Registre en esta casilla el valor total de los saldos pendientes de pago a 31 de diciembre del periodo fiscal",
+      "conceptos_incluidos": [
+        "Obligaciones financieras",
+        "Cuentas por pagar",
+        "Arrendamientos por pagar",
+        "Otros pasivos financieros",
+        "Impuestos, gravámenes y tasas por pagar",
+        "Pasivos por beneficios a los empleados",
+        "Pasivos por ingresos diferidos",
+        "Otros pasivos u obligaciones diferentes a las anteriores"
+      ],
+      "requisitos_respaldo": {
+        "no_obligados_contabilidad": {
+          "regla": "Los contribuyentes que no estén obligados a llevar libros de contabilidad solo podrán solicitar pasivos respaldados por documentos de fecha cierta"
+        },
+        "demas_casos": {
+          "regla": "Los pasivos deben estar respaldados por documentos idóneos y con el lleno de todas las formalidades exigidas por la contabilidad",
+          "normativa": "Consulte el artículo 283 del E.T., en concordancia con los artículos 767 y 770 del E.T"
+        }
+      },
+      "pasivos_moneda_extranjera": {
+        "reconocimiento_inicial": "Los pasivos en moneda extranjera se estiman en moneda nacional al momento de su reconocimiento inicial a la tasa representativa del mercado",
+        "abonos_pagos": "Menos los abonos o pagos medidos a la misma tasa representativa del mercado del reconocimiento inicial",
+        "normativa": "De conformidad con lo previsto en los artículos 285 y 288 del E.T.",
+        "determinacion_valor": "Así mismo tenga en cuenta lo dispuesto en el artículo 287 del E.T. en la determinación del valor patrimonial de las deudas"
+      },
+      "exclusiones": "No incluya provisiones contables que no se acepten fiscalmente",
+      "conciliacion_fiscal": {
+        "formato": "Formato Reporte Conciliación fiscal Anexo 210 (ESF – Patrimonio)",
+        "campo": "Total Pasivos columna valor fiscal"
+      }
+    },
+    "casilla_31": {
+      "nombre": "Total patrimonio líquido",
+      "formula": "Casilla 29 - Casilla 30",
+      "descripcion": "Es el resultado de restar del valor de la casilla 29 (Total patrimonio bruto) el valor de la casilla 30 (Deudas)"
+    }
+  },
+  "cedula_general": {
+    "descripcion": "Comprende las rentas de trabajo, rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria, rentas de capital y rentas no laborales",
+    "rentas_de_trabajo": {
+      "definicion": "Pertenecen a estas rentas de trabajo las definidas en el artículo 103 del E.T.",
+      "casilla_32": {
+        "nombre": "Ingresos brutos de las Rentas de trabajo",
+        "descripcion_general": "Registre en esta casilla el valor en dinero o en especie correspondiente a los siguientes conceptos",
+        "conceptos_incluidos": [
+          "Salarios",
+          "Prima legal",
+          "Primas extralegales",
+          "Cesantías efectivamente pagadas por su empleador en el período",
+          "Cesantías aplicadas a un crédito hipotecario",
+          "Cesantías retiradas en el período de su fondo de cesantías",
+          "Viáticos",
+          "Gastos de representación",
+          "Ingresos en especie (artículo 29-1 del E.T.)",
+          "Ingresos y/o pagos basados en acciones",
+          "Indemnizaciones por despido injustificado",
+          "Bonificaciones y demás conceptos laborales",
+          "Subsidio familiar",
+          "Auxilio por enfermedad",
+          "Auxilio funerario",
+          "Auxilio de maternidad",
+          "Vacaciones",
+          "Emolumentos eclesiásticos"
+        ],
+        "cesantias_reglas_especiales": {
+          "desde_2017": {
+            "regla_general": "A partir del año gravable 2017, el auxilio de cesantía y los intereses sobre cesantías se entenderán realizados en el momento del pago del empleador directo al trabajador o en el momento de consignación al fondo de cesantías encontrándose a disposición del trabajador"
+          },
+          "regimen_tradicional": {
+            "base_legal": "Auxilio de cesantía del régimen tradicional del Código Sustantivo del Trabajo, contenido en el Capítulo VII, Título VIII, parte primera, y demás disposiciones que lo modifiquen o adicionen",
+            "realizacion": "Se entenderá realizado con ocasión del reconocimiento por parte del empleador",
+            "procedimiento_calculo": {
+              "paso_1": "El trabajador reconocerá cada año gravable el ingreso por auxilio de cesantía",
+              "paso_2": "Tomando la diferencia resultante entre los saldos a treinta y uno (31) de diciembre del año gravable materia de declaración del impuesto sobre la renta y complementario y el del año inmediatamente anterior",
+              "paso_3": "En caso de retiros parciales antes del treinta y uno (31) de diciembre de cada año, el valor correspondiente se adicionará"
+            }
+          }
+        },
+        "nota_casillas_auxiliares": {
+          "proposito": "Para diligenciar la casilla 32, el SI de Diligenciamiento habilitará las siguientes casillas no visibles en el documento PDF",
+          "casilla_355": {
+            "nombre": "Salarios",
+            "visibilidad": "No visible en PDF"
+          },
+          "casilla_356": {
+            "nombre": "Honorarios sin costos",
+            "visibilidad": "No visible en PDF"
+          },
+          "objetivo": "Poder determinar lo señalado en el inciso segundo del numeral 1.1.2. del Artículo 1.2.1.20.3. del Decreto 1625 de 2016",
+          "texto_normativo": "La deducción por dependientes a que se refieren el inciso 2 del numeral 3 del artículo 336 y la del artículo 387 del Estatuto Tributario aplican únicamente a los ingresos provenientes de rentas de trabajo y un mismo dependiente solo dará lugar a una de estas dos deducciones, excepto cuando se tenga rentas provenientes de una relación laboral y legal o reglamentaria, caso en el cual se podrá aplicar ambas deducciones por un mismo dependiente"
+        },
+        "apoyos_economicos_educativos": {
+          "relacion_laboral": "En el evento en que el apoyo económico sea otorgado en razón a una relación laboral, legal y reglamentaria, deberá ser declarado en las rentas de trabajo",
+          "caso_contrario": "En caso contrario el apoyo económico corresponderá a una renta no laboral",
+          "base_legal": "Inciso segundo del artículo 1.2.1.12.8. del Decreto 1625 de 2016 Único Reglamentario en Materia Tributaria (en adelante DUR 1625/2016)"
+        },
+        "ingresos_exterior": {
+          "descripcion": "Registre en esta casilla el valor de los ingresos obtenidos en el exterior por cualquiera de los conceptos anteriormente relacionados"
+        },
+        "honorarios_trabajador_independiente": {
+          "incluible": "En esta casilla también podrá incluir los ingresos por concepto de honorarios, comisiones, compensaciones y compensación de servicios personales, recibidos como trabajador independiente",
+          "condicion": "Siempre y cuando no impute costos o deducciones a dichos ingresos para tener derecho a la renta exenta contemplada en el numeral 10 del artículo 206 del E.T.",
+          "diferencia": "Son diferentes a los ingresos registrados en la casilla 43 (Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria)"
+        },
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida, en adelante ERI – Renta Líquida)",
+          "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+          "campo": "Total Ingreso Cedular (valor fiscal), columna Rentas de trabajo"
+        }
+      },
+      "casilla_33": {
+        "nombre": "Ingresos no constitutivos de renta de las Rentas de trabajo",
+        "descripcion": "Incluya en esta sección los ingresos no constitutivos de renta de las Rentas de trabajo",
+        "componentes": {
+          "aportes_obligatorios_pensiones": {
+            "nombre": "Aportes obligatorios a fondos de pensiones y solidaridad pensional y aportes voluntarios al régimen de ahorro individual con solidaridad – RAIS",
+            "descripcion": "Incluya los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones",
+            "base_legal_1": "Parágrafo 1 del artículo 135 de la Ley 100 de 1993",
+            "base_legal_2": "Artículo 55 del E.T.",
+            "cotizaciones_voluntarias": {
+              "desde": "1° de enero de 2017",
+              "descripcion": "Las cotizaciones voluntarias que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones dentro del régimen de ahorro individual con solidaridad",
+              "tratamiento": "Serán considerados como un ingreso no constitutivo de renta ni de ganancia ocasional",
+              "rendimientos": "Este mismo tratamiento tendrán sus rendimientos en el respectivo año gravable en que se generen"
+            },
+            "limite_desde_2019": {
+              "aplicable": "A partir del año gravable 2019",
+              "porcentaje": "25% del ingreso laboral o tributario anual",
+              "limite_UVT": 2500,
+              "descripcion_completa": "Las cotizaciones voluntarias al régimen de ahorro individual con solidaridad serán un ingreso no constitutivo de renta ni de ganancia ocasional para el aportante, en un porcentaje que no exceda el veinticinco por ciento (25%) del ingreso laboral o tributario anual limitado a dos mil quinientas (2.500) (UVT)"
+            },
+            "retiros": {
+              "regla": "Los retiros, parciales o totales, de las cotizaciones voluntarias de los afiliados al régimen de ahorro individual con solidaridad para fines distintos a la obtención de una mayor pensión o un retiro anticipado constituirán renta gravada en el año en que sean retirados"
+            }
+          },
+          "aportes_obligatorios_salud": {
+            "nombre": "Aportes obligatorios a salud",
+            "descripcion": "Registre los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Salud",
+            "tratamiento_1": "Los cuales no harán parte de la base para aplicar la retención en la fuente por salarios",
+            "tratamiento_2": "Serán considerados como un ingreso no constitutivo de renta ni de ganancia ocasional"
+          },
+          "apoyos_economicos_educativos": {
+            "nombre": "Apoyos económicos para financiar programas educativos",
+            "descripcion": "Son ingresos no constitutivos de renta o ganancia ocasional, los apoyos económicos no reembolsables o condonados, entregados por el Estado o financiados con recursos públicos, para financiar programas educativos",
+            "condicion": "Cuando sean otorgados en razón a una relación de tipo laboral o legal y reglamentaria"
+          },
+          "otros": {
+            "nombre": "Otros ingresos no constitutivos de renta",
+            "descripcion": "Los demás ingresos no constitutivos de renta que apliquen a las rentas de trabajo"
+          }
+        },
+        "nota_pagos_alimentacion": {
+          "monto": "41 UVT o inferiores",
+          "concepto": "Pagos efectuados a terceras personas por concepto de alimentación del trabajador o de su familia",
+          "salario_maximo": "310 UVT mensuales",
+          "regla": "No deberán ser incluidos como ingresos no constitutivos siempre y cuando el empleador no los hubiese reportado en la casilla 36 (Pagos por salarios) en el formato 220 (Certificado de ingresos y retenciones por rentas de trabajo y de pensiones)"
+        },
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida, en adelante ERI – Renta Líquida)",
+          "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+          "campo": "Ingresos no constitutivos de renta ni ganancia ocasional, columna Rentas de trabajo"
+        }
+      },
+      "casilla_34": {
+        "nombre": "Renta líquida de las Rentas de trabajo",
+        "formula": "Casilla 32 - Casilla 33",
+        "descripcion": "Es el resultado de restarle a la casilla 32 (Ingresos brutos por rentas de trabajo) el valor de la casilla 33 (Ingresos no constitutivos de renta)"
+      },
+      "rentas_exentas": {
+        "titulo": "RENTAS EXENTAS DE RENTAS DE TRABAJO",
+        "casilla_35": {
+          "nombre": "Rentas exentas de las Rentas de trabajo – Aportes voluntarios AFC, FVP y/o AVC",
+          "condicion_aplicacion": "Si el valor de la casilla 34 es mayor que cero (0)",
+          "descripcion": "Registre en esta casilla el valor de los depósitos efectuados a las Cuentas de Ahorro para el Fomento de la Construcción – AFC, aportes voluntarios a los seguros privados de pensiones – FVP y a las Cuentas de Ahorro Voluntario Contractual – AVC",
+          "limites": {
+            "porcentaje_maximo": "30%",
+            "base_porcentaje": "Del ingreso laboral o del ingreso tributario del año, según corresponda",
+            "limite_UVT": 3800,
+            "descripcion_limite": "Hasta un monto máximo de tres mil ochocientas (3.800) UVT por año"
+          },
+          "alcance": {
+            "aportes_empleador": "El monto de los aportes voluntarios del empleador",
+            "aportes_trabajador": "Trabajador",
+            "aportes_participe": "Del partícipe independiente",
+            "destino": "Que se realicen a los seguros privados de pensiones y a los fondos de pensiones voluntarias",
+            "entidades": "Administrados por las entidades vigiladas por la Superintendencia Financiera de Colombia",
+            "tratamiento_retencion": "No harán parte de la base para aplicar la retención en la fuente",
+            "tratamiento_renta": "Serán considerados como una renta exenta en el impuesto sobre la renta y complementario"
+          },
+          "suma_maxima": {
+            "descripcion": "Hasta una suma que adicionada al valor de los aportes efectuados a:",
+            "componentes": [
+              "Las Cuentas de Ahorro para el Fomento de la Construcción (AFC) de que trata el artículo 126-4 del E.T.",
+              "Las Cuentas de Ahorro Voluntario Contractual (AVC) de que trata el artículo 2 de la Ley 1114 de 2006"
+            ],
+            "limite_total": "No exceda del treinta por ciento (30%) del ingreso laboral o ingreso tributario del año, según el caso, y hasta un monto máximo de tres mil ochocientas (3.800) UVT por año"
+          },
+          "retiro_anticipado": {
+            "periodo_minimo": "10 años",
+            "conteo": "Contados a partir de la fecha de su consignación",
+            "consecuencia": "El retiro de los recursos para cualquier otro propósito, antes de un período mínimo de permanencia de diez (10) años implica que el trabajador pierda el beneficio",
+            "accion_entidad": "Que se efectúen, por parte de la respectiva entidad financiera, las retenciones inicialmente no realizadas en el año en que se percibió el ingreso y se realizó el aporte"
+          },
+          "retiros_autorizados": {
+            "condicion_1": "Los retiros, parciales o totales, de aportes y rendimientos, que cumplan con el periodo de permanencia mínimo exigido",
+            "condicion_2": "Que se destinen para los fines autorizados en el artículo 126-1 del E.T.",
+            "tratamiento": "Mantienen la condición de rentas exentas",
+            "declaracion": "No deben ser incluidos en la declaración de renta del periodo en que se efectuó el retiro"
+          },
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+            "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+            "campos": [
+              "Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias",
+              "Aportes a cuentas AFC y AVC"
+            ],
+            "columna": "Rentas de trabajo"
+          }
+        },
+        "casilla_36": {
+          "nombre": "Rentas exentas de las Rentas de trabajo – Otras rentas exentas",
+          "condicion_aplicacion": "Si el valor de la casilla 34 (Renta líquida de las Rentas de trabajo) es mayor que cero (0)",
+          "descripcion": "Registre en esta casilla las rentas exentas imputables a las Rentas de trabajo diferentes a las registradas en la casilla 35",
+          "concepto_renta_exenta": "La renta exenta es un beneficio que recae sobre la renta líquida, es decir, es una porción de la renta líquida que se resta de esta, para obtener la renta líquida gravable",
+          "otras_rentas_exentas_trabajo": {
+            "1": {
+              "nombre": "Indemnizaciones por accidente de trabajo o enfermedad",
+              "alcance": "La exención prevista opera únicamente sobre los valores que correspondan al mínimo legal de que tratan las normas laborales",
+              "excedente": "El excedente no está exento del impuesto de renta y complementario"
+            },
+            "2": {
+              "nombre": "Indemnizaciones que impliquen protección a la maternidad",
+              "alcance": "La exención prevista opera únicamente sobre los valores que correspondan al mínimo legal de que tratan las normas laborales",
+              "excedente": "El excedente no está exento del impuesto de renta y complementario"
+            },
+            "3": {
+              "nombre": "Lo recibido por gastos de entierro del trabajador",
+              "alcance": "La exención prevista opera únicamente sobre los valores que correspondan al mínimo legal de que tratan las normas laborales",
+              "excedente": "El excedente no está exento del impuesto de renta y complementario"
+            },
+            "4": {
+              "nombre": "El auxilio de cesantía y los intereses sobre cesantías",
+              "condicion": "Siempre y cuando sean recibidos por trabajadores cuyo ingreso mensual promedio en los seis (6) últimos meses de vinculación laboral no exceda de trescientas cincuenta (350) UVT",
+              "cuando_excede_350_UVT": "Cuando el salario mensual promedio a que se refiere este numeral exceda de trescientas cincuenta (350) UVT la parte no gravada se determinará así:",
+              "alcance": "La exención prevista opera únicamente sobre los valores que correspondan al mínimo legal de que tratan las normas laborales",
+              "excedente": "El excedente no está exento del impuesto de renta y complementario"
+            },
+            "cesantias_acumuladas_2016": {
+              "nombre": "Cesantías acumuladas a 31 de diciembre de 2016 (retiradas)",
+              "descripcion": "Los montos acumulados del auxilio de cesantía a treinta y uno (31) de diciembre de 2016 en los fondos de cesantías o en las cuentas del patrono para aquellos trabajadores cobijados con el régimen tradicional contenido en el Capítulo VII, Título VIII parte Primera del Código Sustantivo del Trabajo",
+              "momento_retiro": "Al momento del retiro del fondo de cesantías o pago por parte del empleador",
+              "tratamiento": "Mantendrán el tratamiento previsto en el numeral 4 del artículo 206 del E.T.",
+              "excepcion": "Sin que sea aplicable lo dispuesto en el numeral 3 del artículo 336 del E.T.",
+              "retiros_parciales": "Cuando se realicen retiros parciales, estos se entenderán efectuados con cargo al saldo acumulado a que se refiere el inciso anterior, hasta que se agote"
+            },
+            "5": {
+              "nombre": "Prestaciones sociales Fuerzas Militares y Policía",
+              "descripcion": "El seguro por muerte, las compensaciones por muerte y las prestaciones sociales en actividad y en retiro de los miembros de las Fuerzas Militares y de la Policía Nacional",
+              "limite": "Las rentas exentas establecidas no estarán sujetas a las limitantes previstas en el numeral 3 del artículo 336 del E.T."
+            },
+            "6": {
+              "nombre": "Gastos de representación Magistrados y Jueces",
+              "magistrados_tribunales": {
+                "aplicable_a": "Para el caso de los Magistrados de los Tribunales, sus Fiscales y Procuradores Judiciales",
+                "porcentaje": "50%",
+                "base": "De su salario",
+                "descripcion": "Se considerará como gastos de representación exentos un porcentaje equivalente al cincuenta por ciento (50%) de su salario"
+              },
+              "jueces": {
+                "aplicable_a": "Para los Jueces de la República",
+                "porcentaje": "25%",
+                "base": "Sobre su salario",
+                "descripcion": "El porcentaje exento será del veinticinco por ciento (25%) sobre su salario"
+              },
+              "limite": "Las rentas exentas establecidas no estarán sujetas a las limitantes previstas en el numeral 3 del artículo 336 del E.T."
+            },
+            "7": {
+              "nombre": "Exceso del salario básico FFMM y Policía",
+              "descripcion": "El exceso del salario básico percibido por los Oficiales, Suboficiales y Soldados Profesionales de las Fuerzas Militares y Oficiales, Suboficiales, Nivel Ejecutivo, Patrulleros y Agentes de la Policía Nacional",
+              "limite": "Las rentas exentas establecidas no estarán sujetas a las limitantes previstas en el numeral 3 del artículo 336 del E.T."
+            },
+            "8": {
+              "nombre": "Gastos de representación rectores y profesores universidades públicas",
+              "descripcion": "Los gastos de representación de los rectores y profesores de universidades públicas",
+              "limite_porcentual": "50%",
+              "base": "De su salario",
+              "descripcion_completa": "Los cuales no podrán exceder del cincuenta por ciento (50%) de su salario",
+              "limite_articulo": "Las rentas exentas establecidas no estarán sujetas a las limitantes previstas en el numeral 3 del artículo 336 del E.T."
+            },
+            "9": {
+              "nombre": "25% del valor total de los pagos laborales",
+              "porcentaje": "25%",
+              "base": "Del valor total de los pagos laborales",
+              "limite_anual_UVT": 790,
+              "descripcion_limite": "Estará limitado anualmente a setecientos noventa (790) UVT",
+              "calculo": {
+                "descripcion": "El cálculo de esta renta exenta se efectuará una vez se detraiga del valor total de los pagos laborales recibidos por el trabajador:",
+                "restar_1": "Los ingresos no constitutivos de renta",
+                "restar_2": "Las deducciones",
+                "restar_3": "Las demás rentas exentas diferentes a la establecida en el presente numeral"
+              },
+              "exclusiones": [
+                "La exención aquí prevista no se otorgará sobre las cesantías",
+                "Sobre la porción de los ingresos excluida o exonerada del impuesto de renta por otras disposiciones",
+                "Ni sobre la parte gravable de las pensiones"
+              ],
+              "sustitucion": "La exención del factor prestacional a que se refiere el artículo 18 de la Ley 50 de 1990 queda sustituida por lo previsto en este instructivo",
+              "limite_articulo": "Las rentas exentas establecidas no estarán sujetas a las limitantes previstas en el numeral 3 del artículo 336 del E.T."
+            },
+            "rentas_trabajo_no_laboral": {
+              "descripcion": "Las rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria podrán optar entre restar los costos o gastos procedentes o aplicar la renta exenta de que trata el numeral 10 del artículo 206 del E.T."
+            },
+            "prima_especial_diplomaticos": {
+              "nombre": "Prima especial y prima de costo de vida servidores públicos exterior",
+              "descripcion": "De la misma forma, tendrán el tratamiento de renta exenta la prima especial y la prima de costo de vida de los servidores públicos de la planta en el exterior que, aunque presten servicios fuera de Colombia, sean residentes fiscales en el país",
+              "determinacion_impuesto": {
+                "aplicable_a": "Para efectos de la determinación del impuesto sobre la renta y complementario de los servidores públicos diplomáticos, consulares y administrativos del Ministerio de Relaciones Exteriores",
+                "primas_exentas": [
+                  "La prima especial",
+                  "La prima de costo de vida de que trata el Decreto 3357 de 2009, o las normas que lo modifiquen o sustituyan"
+                ],
+                "tratamiento": "Estarán exentas del impuesto sobre la renta"
+              },
+              "mismo_tratamiento": {
+                "aplicable_a": "El mismo tratamiento es aplicable respecto a la prima especial y la prima de costo de vida de los servidores públicos de las plantas en el exterior que, aunque presten sus servicios fuera de Colombia, sean residentes fiscales en el país",
+                "base_legal": "De conformidad con el numeral 2 del artículo 10 del E.T."
+              },
+              "exclusion_limites": "Estas primas no se tendrán en cuenta para efectos del cálculo de los límites establecidos en el numeral 3 del artículo 336 del E.T."
+            },
+            "10": {
+              "nombre": "Otras rentas exentas",
+              "descripcion": "Incluya los valores correspondientes a otras rentas exentas laborales diferentes a las registradas anteriormente, y que estén contempladas en la ley"
+            },
+            "11": {
+              "nombre": "Rentas exentas en virtud de convenios para evitar la doble tributación y las señaladas por ley",
+              "descripcion": "Registre los ingresos derivados de los convenios para evitar la doble tributación y los que la ley señale expresamente como tal",
+              "decision_578_CAN": {
+                "nombre": "Decisión 578 de 2004 de la Comunidad Andina de Naciones – CAN",
+                "aplicable_a": "Ingresos por servicios prestados en los países miembros de la Comunidad Andina de Naciones – CAN, por personas naturales residentes en Colombia",
+                "regimen": "Se debe observar el régimen previsto en la Decisión 578 de 2004 de la Comisión de la Comunidad Andina",
+                "principio": "En donde se prevé que las rentas provenientes de la prestación de servicios personales o empresariales solo serán gravables en el territorio en el cual tales servicios fueren prestados",
+                "excepciones": "Salvo los casos de excepción previstos en la misma Decisión",
+                "consecuencia": "En consecuencia, las rentas obtenidas por la prestación de servicios en los países miembros de la CAN, son consideradas exentas en Colombia en atención a la filosofía fundamental de la Decisión de evitar la doble tributación y prevenir la evasión fiscal en los países miembros"
+              }
+            }
+          },
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+            "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+            "campo": "Rentas exentas menos Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias y Aportes a cuentas AFC y AVC",
+            "columna": "Rentas de trabajo"
+          }
+        },
+        "casilla_37": {
+          "nombre": "Total rentas exentas de las Rentas de trabajo",
+          "formula": "Casilla 35 + Casilla 36",
+          "descripcion": "Es el resultado de sumar las casillas 35 (Rentas exentas de las Rentas de trabajo – Aportes voluntarios AFC, FVP y AVC) y 36 (Rentas exentas de las Rentas de trabajo – Otras rentas exentas)"
+        }
+      },
+      "deducciones_imputables": {
+        "titulo": "DEDUCCIONES IMPUTABLES A LAS RENTAS DE TRABAJO",
+        "casilla_38": {
+          "nombre": "Deducciones imputables a las Rentas de trabajo – Intereses de vivienda",
+          "condicion_aplicacion": "Si el valor de la casilla 34 (Renta líquida de las Rentas de trabajo) es mayor que cero (0)",
+          "base_legal": "Artículo 119 del E.T.",
+          "limite_anual_UVT": 1200,
+          "descripcion": "Registre en esta casilla el valor de los intereses y/o corrección monetaria pagados sobre préstamos para adquisición de vivienda de acuerdo con lo establecido en el artículo 119 del E.T. el cual no podrá exceder de mil doscientas (1.200) UVT en el año",
+          "requisitos": [
+            "Son deducibles los intereses que se paguen sobre préstamos para adquisición de vivienda del contribuyente",
+            "Siempre que el préstamo esté garantizado con hipoteca si el acreedor no está sometido a la vigilancia del Estado",
+            "Se cumplen las demás condiciones señaladas en el artículo 119 del E.T."
+          ],
+          "prestamos_UPAC_UVR": {
+            "descripcion": "Cuando el préstamo de vivienda se haya adquirido en unidades de poder adquisitivo constante",
+            "limite_unidades": 4553,
+            "limite_unidades_descripcion": "La deducción por intereses y corrección monetaria estará limitada para cada contribuyente al valor equivalente a las primeras cuatro mil quinientos cincuenta y tres (4.553) Unidades de Poder Adquisitivo Constante UPAC (hoy UVR), del respectivo préstamo",
+            "limite_anual": "Dicha deducción no podrá exceder anualmente del valor equivalente de mil (1.000) Unidades de Poder Adquisitivo Constante, hoy mil doscientas (1.200) UVT",
+            "base_legal": "Artículo 119 del E.T."
+          },
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+            "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+            "campo": "Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de trabajo"
+          }
+        },
+        "casilla_39": {
+          "nombre": "Deducciones imputables a las Rentas de trabajo – Otras deducciones imputables",
+          "condicion_aplicacion": "Si el valor de la casilla 34 (Renta líquida de las Rentas de trabajo) es mayor que cero (0)",
+          "descripcion": "Registre en esta casilla las deducciones imputables a las Rentas de trabajo diferentes a las registradas en la casilla 38",
+          "concepto_general": "Las deducciones imputables son aquellas que, aunque no tengan relación directa con la actividad productora de renta, por expresa disposición legal son aceptadas como beneficio tributario",
+          "detalle_deducciones": {
+            "1": {
+              "nombre": "Los aportes a título de cesantía, realizados por los partícipes independientes",
+              "limite_UVT": 2500,
+              "restriccion": "Sin que excedan de un doceavo del ingreso gravable del respectivo año",
+              "base_legal": "Inciso sexto del artículo 126-1 del E.T.",
+              "descripcion": "Serán deducibles de la renta hasta la suma de dos mil quinientas (2.500) UVT, sin que excedan de un doceavo del ingreso gravable del respectivo año"
+            },
+            "2": {
+              "nombre": "Pagos por salud",
+              "limite_mensual_UVT": 16,
+              "descripcion": "El trabajador podrá deducir los pagos por salud, siempre que el valor a disminuir mensualmente, en este último caso, no supere dieciséis (16) UVT mensuales",
+              "requisito_control": "Los pagos por salud deberán cumplir las condiciones de control que señale el Gobierno nacional",
+              "componentes": {
+                "a": {
+                  "descripcion": "Los pagos efectuados por contratos de prestación de servicios a empresas de medicina prepagada vigiladas por la Superintendencia Nacional de Salud",
+                  "alcance": "Que impliquen protección al trabajador, su cónyuge, sus hijos y dependientes"
+                },
+                "b": {
+                  "descripcion": "Los pagos efectuados por seguros de salud",
+                  "emitidos_por": "Expedidos por compañías de seguros vigiladas por la Superintendencia Financiera de Colombia"
+                }
+              }
+            },
+            "3": {
+              "nombre": "Deducción por dependientes económicos",
+              "porcentaje": "10%",
+              "base_calculo": "Del total de dicha renta en el respectivo mes por concepto de dependientes",
+              "limite_mensual_UVT": 32,
+              "base_legal": "De conformidad con lo establecido en el numeral 1.1.2. del artículo 1.2.1.20.3. del DUR 1625/2016",
+              "descripcion_limite": "Hasta un máximo de treinta y dos (32) UVT mensuales",
+              "calidad_dependientes": {
+                "definicion": "Para propósitos de esta deducción tendrán la calidad de dependientes:",
+                "categorias": [
+                  {
+                    "nombre": "Hijos hasta 18 años",
+                    "descripcion": "Los hijos del contribuyente que tengan hasta 18 años de edad"
+                  },
+                  {
+                    "nombre": "Hijos 18-23 años en educación",
+                    "descripcion": "Los hijos del contribuyente con edad entre 18 y 23 años, cuando el padre o madre contribuyente persona natural se encuentre financiando su educación en instituciones formales de educación superior certificadas por el ICFES o la autoridad oficial correspondiente",
+                    "incluye": "O en los programas técnicos de educación no formal debidamente acreditados por la autoridad competente"
+                  },
+                  {
+                    "nombre": "Hijos mayores 18 años con dependencia",
+                    "descripcion": "Los hijos del contribuyente mayores de 18 años que se encuentren en situación de dependencia originada en factores físicos o psicológicos",
+                    "certificacion": "Que sean certificados por Medicina Legal",
+                    "base_legal": "De conformidad con lo establecido en el numeral 3 del artículo 1.2.4.1.18. del DUR 1625/2016"
+                  },
+                  {
+                    "nombre": "Cónyuge o compañero permanente",
+                    "descripcion": "El cónyuge o compañero(a) permanente del contribuyente que se encuentre en situación de dependencia",
+                    "criterios_dependencia": [
+                      "Sea por ausencia de ingresos",
+                      "O ingresos en el año menores a doscientas sesenta (260) UVT, certificada por contador público",
+                      "O por dependencia originada en factores físicos o psicológicos que sean certificados por Medicina Legal"
+                    ]
+                  },
+                  {
+                    "nombre": "Padres y hermanos",
+                    "descripcion": "Los padres y los hermanos del contribuyente que se encuentren en situación de dependencia",
+                    "criterios_dependencia": [
+                      "Sea por ausencia de ingresos",
+                      "O ingresos en el año menores a doscientas sesenta (260) UVT, certificada por contador público",
+                      "O por dependencia originada en factores físicos o psicológicos que sean certificados por Medicina Legal"
+                    ]
+                  }
+                ]
+              },
+              "deduccion_adicional_2023": {
+                "desde": "Año gravable 2023 y siguientes",
+                "monto_UVT": 72,
+                "por_dependiente": "Sí",
+                "maximo_dependientes": 4,
+                "descripcion": "El trabajador podrá deducir setenta y dos (72) UVT por dependiente hasta un máximo de cuatro (4) dependientes en adición a los límites señalados en el inciso primero del numeral 3 del artículo 336 del E.T."
+              },
+              "aplicacion_especial": {
+                "regla": "La deducción por dependientes indicada anteriormente, aplican únicamente a los ingresos provenientes de rentas de trabajo y un mismo dependiente solo dará lugar a una de estas dos deducciones",
+                "excepcion": "Excepto cuando se tenga rentas provenientes de una relación laboral y legal o reglamentaria, caso en el cual se podrá aplicar ambas deducciones por un mismo dependiente"
+              }
+            },
+            "4": {
+              "nombre": "Gravamen a los Movimientos Financieros GMF",
+              "porcentaje_deducible": "50%",
+              "descripcion": "Será deducible el cincuenta por ciento (50%) del Gravamen a los Movimientos Financieros – GMF efectivamente pagado por los contribuyentes durante el respectivo año gravable",
+              "independencia_causalidad": "Independientemente que tenga o no relación de causalidad con la actividad económica del contribuyente",
+              "requisito": "Siempre que se encuentre debidamente certificado por el agente retenedor"
+            },
+            "5": {
+              "nombre": "Deducción de intereses sobre préstamos educativos del ICETEX",
+              "base_legal": "Inciso tercero del artículo 119 del E.T.",
+              "descripcion": "Serán deducibles los intereses de que trata el inciso tercero del artículo 119 del E.T. sobre préstamos educativos del Instituto Colombiano de Créditos Educativo y Estudios Técnicos en el Exterior (ICETEX)",
+              "finalidad": "Dirigidos para la educación superior del contribuyente",
+              "limite_anual_UVT": 100,
+              "descripcion_limite": "Dicha deducción no podrá exceder anualmente del valor equivalente a cien (100) UVT"
+            }
+          },
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+            "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+            "campo": "Deducciones menos Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de trabajo"
+          }
+        },
+        "casilla_40": {
+          "nombre": "Total deducciones imputables a las Rentas de trabajo",
+          "formula": "Casilla 38 + Casilla 39",
+          "descripcion": "Es el resultado de sumar las casillas 38 (Deducciones imputables a las Rentas de trabajo – Intereses de vivienda) y 39 (Deducciones imputables a las Rentas de trabajo – Otras deducciones imputables)"
+        }
+      },
+      "rentas_exentas_deducciones_limitadas": {
+        "titulo": "RENTAS EXENTAS Y DEDUCCIONES IMPUTABLES DE LAS RENTA DE TRABAJO (LIMITADAS)",
+        "nota_importante": "Tenga en cuenta que, para calcular las rentas exentas y deducciones imputables a la Renta líquida cédula general, el SI de Diligenciamiento realizará la siguiente operación:",
+        "metodologia_calculo": {
+          "paso_1_calculo_base": {
+            "descripcion": "Se suman los ingresos brutos y se restan los ingresos no constitutivos de renta",
+            "formula_texto": "Casilla 32 + Casilla 43 + Casilla 58 + Ingresos pasivos ECE Rentas capital + Casilla 74 + Ingresos pasivos ECE Rentas no laborales - Casilla 33 - Casilla 44 - Casilla 59 - Casilla 76",
+            "componentes_suma": [
+              "Casilla 32: Ingresos brutos de las Rentas de trabajo",
+              "Casilla 43: Ingresos brutos por Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria",
+              "Casilla 58: Ingresos brutos de la Rentas de capital",
+              "Ingresos pasivos de la Rentas de capital provenientes de una ECE controlada por residentes colombianos",
+              "Casilla 74: Ingresos brutos de las Rentas no laborales",
+              "Ingresos pasivos de la Rentas no laborales provenientes de una ECE controlada por residentes colombianos"
+            ],
+            "componentes_resta": [
+              "Casilla 33: Ingresos no constitutivos de renta de las Rentas de trabajo",
+              "Casilla 44: Ingresos no constitutivos de renta de las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria",
+              "Casilla 59: Ingresos no constitutivos de renta de las Rentas de capital",
+              "Casilla 76: Ingresos no constitutivos de renta de las Rentas no laborales"
+            ]
+          },
+          "paso_2_aplicar_porcentaje": {
+            "descripcion": "A este resultado se le aplica el cuarenta por ciento (40%)",
+            "porcentaje": "40%",
+            "limite_maximo_UVT": 1340,
+            "descripcion_limite": "Que, en todo caso, no puede superar las mil trescientas cuarenta (1.340) UVT anuales"
+          },
+          "paso_3_sumar_exentas_sin_limite": {
+            "descripcion": "Al cuarenta por ciento (40%) o a las mil trescientas cuarenta (1.340) UVT anuales calculado anteriormente, se suman las rentas exentas que conforme a los incisos 3 y 4 del artículo 1.2.1.20.4. del DUR 1625/2016., no les son aplicados dichos límites",
+            "base_legal": "Incisos 3 y 4 del artículo 1.2.1.20.4. del DUR 1625/2016"
+          },
+          "paso_4_distribucion": {
+            "descripcion": "Una vez obtenido el valor total de las Rentas exentas y Deducciones imputables a la Renta líquida cédula general, se distribuirá en las casillas correspondientes a las Rentas exentas y deducciones imputables (Limitadas)",
+            "orden_distribucion": [
+              "Primero a las Rentas de trabajo",
+              "Segundo a las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria",
+              "Después a las Rentas de capital",
+              "Por último a las Rentas no laborales"
+            ],
+            "criterio": "Hasta agotar el valor total de las rentas exentas y deducciones, de acuerdo al cálculo realizado en el inciso anterior"
+          }
+        },
+        "nota_ingresos_pasivos_ECE": {
+          "casilla_268": {
+            "nombre": "Ingresos pasivos Rentas de capital – ECE",
+            "visibilidad": "No visible en el documento PDF",
+            "habilitacion": "El SI de Diligenciamiento habilitará cuando sea diligenciada la casilla 62 (Rentas líquidas pasivas – ECE de las Rentas de capital)"
+          },
+          "casilla_269": {
+            "nombre": "Ingresos pasivos Rentas no laborales – ECE",
+            "visibilidad": "No visible en el documento PDF",
+            "habilitacion": "El SI de Diligenciamiento habilitará cuando sea diligenciada la casilla 79 (Rentas líquidas pasivas – ECE de las Rentas no laborales)"
+          }
+        },
+        "excepciones_limites": {
+          "descripcion": "Los límites antes mencionados no aplicarán a:",
+          "excepciones": [
+            "Las rentas exentas en virtud de un convenio para evitar la doble tributación",
+            "Acuerdos multilaterales",
+            "Las rentas provenientes de la Decisión 578 de 2004 de la Comunidad Andina de Naciones (CAN)"
+          ]
+        },
+        "casilla_41": {
+          "nombre": "Rentas exentas y/o deducciones imputables a las Rentas de trabajo (Limitadas)",
+          "descripcion": "De acuerdo con la instrucción para el cálculo de las Rentas exentas y deducciones imputables a la Renta líquida cédula general, el SI de diligenciamiento distribuirá en esta casilla el valor de las Rentas exentas y deducciones imputables a las que tiene derecho",
+          "fuentes": [
+            "Casilla 37 (Total rentas exentas)",
+            "Casilla 40 (Total deducciones imputables)"
+          ],
+          "controles": {
+            "control_1": "Controlando que dicho valor no supere el valor de la renta líquida registrada en la casilla 34 (Renta líquida)",
+            "control_2": "Ni el valor de la sumatoria de las casillas 37 (Total rentas exentas) y 40 (Total deducciones imputables) de las Rentas de trabajo"
+          },
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+            "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+            "campo": "Total rentas exentas y deducciones imputables (limitadas)",
+            "columna": "Rentas de trabajo"
+          }
+        },
+        "casilla_42": {
+          "nombre": "Renta líquida ordinaria de las Rentas de trabajo",
+          "formula": "Casilla 34 - Casilla 41",
+          "condicion": "Resultado positivo",
+          "descripcion": "Es el resultado positivo de restar del valor de la casilla 34 (Renta líquida), el valor de la casilla 41 (Rentas exentas y/o deducciones imputables (Limitadas))"
+        }
+      }
+    },
+    "rentas_trabajo_no_laboral": {
+      "titulo": "SECCIÓN RENTAS DE TRABAJO QUE NO PROVENGAN DE UNA RELACIÓN LABORAL O LEGAL Y REGLAMENTARIA",
+      "casilla_43": {
+        "nombre": "Ingresos brutos de las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria",
+        "descripcion": "Registre en esta casilla el valor de los ingresos por rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria obtenidos por las personas siempre y cuando optaron por solicitar costos y deducciones procedentes en lugar de la exención contemplada en el numeral 10 del artículo 206 del E.T.",
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (Estado de Resultado Integral – Renta Líquida)",
+          "seccion": "Sección Determinación de las Rentas Líquidas Cedulares",
+          "campo": "Total ingreso cedular (valor fiscal)",
+          "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos",
+          "nota": "Entiéndase como 'Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria'"
+        }
+      },
+      "casilla_44": {
+        "nombre": "Ingresos no constitutivos de renta de las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria",
+        "descripcion": "Incluya en esta casilla los ingresos no constitutivos de renta",
+        "componentes": {
+          "aportes_obligatorios_pensiones": {
+            "nombre": "Aportes obligatorios a fondos de pensiones y solidaridad pensional y aportes voluntarios al régimen de ahorro individual con solidaridad – RAIS",
+            "descripcion": "Incluya los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones",
+            "base_legal": [
+              "Parágrafo 1 del artículo 135 de la Ley 100 de 1993",
+              "Artículo 55 del E.T."
+            ],
+            "desde_2017": "Las cotizaciones voluntarias que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones dentro del régimen de ahorro individual con solidaridad a partir del 1° de enero de 2017 y los aportes voluntarios a fondos de pensiones obligatorios, serán considerados como un ingreso no constitutivo de renta ni de ganancia ocasional",
+            "rendimientos": "Este mismo tratamiento tendrán sus rendimientos en el respectivo año gravable en que se generen",
+            "limite_desde_2019": {
+              "porcentaje": "25%",
+              "base": "Del ingreso laboral o tributario anual",
+              "limite_UVT": 2500,
+              "descripcion": "A partir del año gravable 2019 las cotizaciones voluntarias al régimen de ahorro individual con solidaridad serán un ingreso no constitutivo de renta ni de ganancia ocasional para el aportante, en un porcentaje que no exceda el veinticinco por ciento (25%) del ingreso laboral o tributario anual limitado a dos mil quinientas (2.500) (UVT)"
+            },
+            "retiros": "Los retiros, parciales o totales, de las cotizaciones voluntarias de los afiliados al régimen de ahorro individual con solidaridad para fines distintos a la obtención de una mayor pensión o un retiro anticipado constituirán renta gravada en el año en que sean retirados"
+          },
+          "aportes_obligatorios_salud": {
+            "nombre": "Aportes obligatorios a salud",
+            "descripcion": "Registre los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Salud",
+            "tratamiento": "Los cuales no harán parte de la base para aplicar la retención en la fuente por salarios, y serán considerados como un ingreso no constitutivo de renta ni de ganancia ocasional"
+          },
+          "otros": {
+            "nombre": "Otros ingresos no constitutivos de renta",
+            "descripcion": "Los demás ingresos no constitutivos de renta que apliquen a las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria"
+          }
+        },
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (ERI – Renta Líquida)",
+          "campo": "Ingresos no constitutivos de renta ni ganancia ocasional",
+          "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+        }
+      },
+      "casilla_45": {
+        "nombre": "Costos y deducciones procedentes",
+        "descripcion": "Se podrán restar los costos y los gastos asociados a las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria, en desarrollo de las actividades correspondientes",
+        "opcion_contribuyente": {
+          "base_legal": "Parágrafo 5 del artículo 206 del E.T.",
+          "opciones": [
+            "Restar los costos y gastos procedentes",
+            "Aplicar la renta exenta prevista en el numeral 10 del artículo 206 del E.T."
+          ],
+          "nota": "Deberán optar entre una u otra opción"
+        },
+        "requisitos_costos_gastos": {
+          "descripcion": "Los costos y gastos que se pueden detraer corresponden a todas aquellas erogaciones en que se incurra para la obtención del ingreso",
+          "cumplimiento": "Que cumplen todos los requisitos y limitaciones para su procedencia",
+          "base_legal": "De conformidad con lo establecido en el artículo 771-2 del E.T."
+        },
+        "impuestos_deducibles_2023": {
+          "desde": "Año gravable 2023 y siguientes",
+          "porcentaje": "100%",
+          "descripcion": "Es deducible el cien por ciento (100%) de los impuestos, tasas y contribuciones, que efectivamente se hayan pagado durante el año o período gravable por parte del contribuyente",
+          "requisito": "Que tengan relación de causalidad con su actividad económica",
+          "excepcion": "Con excepción del Impuesto sobre la renta y complementario"
+        },
+        "deduccion_primer_empleo": {
+          "nombre": "Deducción especial por primer empleo",
+          "porcentaje": "120%",
+          "base": "De los pagos que realicen por concepto de salario",
+          "aplicable_a": "Contribuyentes obligados a presentar declaración de renta y complementario",
+          "condiciones_empleado": [
+            "Empleados menores de veintiocho (28) años",
+            "Siempre y cuando se trate del primer empleo de la persona"
+          ],
+          "limite_mensual_UVT": 115,
+          "periodo_aplicacion": "Procederá en el año gravable en el que el empleado sea contratado por el contribuyente",
+          "requisitos_adicionales": {
+            "nuevos_empleos": "Debe tratarse de nuevos empleos",
+            "fecha_contratacion": "El empleado deberá ser contratado con posterioridad a la vigencia de la Ley 2010 de 2019",
+            "edad_maxima": "Ser menor de veintiocho (28) años",
+            "primer_empleo": "Ser el primer empleo de la persona"
+          },
+          "certificacion": {
+            "emisor": "El Ministerio del Trabajo",
+            "contenido": "Expedirá al contribuyente una certificación en la que se acredite que se trata del primer empleo de la persona menor de veintiocho (28) años",
+            "requisito": "Como requisito para poder acceder a la deducción de que trata el artículo 108-5 del E.T."
+          },
+          "registro": "El Ministerio del Trabajo llevará un registro anualizado de todas las certificaciones de primer empleo que expida, con la identificación del empleado y del contribuyente",
+          "base_legal": "Artículo 108-5 del E.T."
+        },
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (ERI – Renta Líquida)",
+          "campo": "Costos más Gastos",
+          "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+        }
+      },
+      "casilla_46": {
+        "nombre": "Renta líquida",
+        "formula": "Casilla 43 - Casilla 44 - Casilla 45",
+        "condicion": "Resultado positivo",
+        "descripcion": "Es el resultado positivo de restarle al valor de la casilla 43 los valores de las casillas 44 y 45"
+      },
+      "rentas_exentas": {
+        "casilla_47": {
+          "nombre": "Rentas exentas – Aportes voluntarios AFC, FVP y/o AVC",
+          "condicion": "Si el valor de la casilla 46 es mayor que cero (0)",
+          "componentes": [
+            "Depósitos efectuados a las Cuentas de Ahorro para el Fomento de la Construcción – AFC",
+            "Aportes voluntarios a los seguros privados de pensiones – FVP",
+            "Aportes a las Cuentas de Ahorro Voluntario Contractual – AVC"
+          ],
+          "limites": {
+            "porcentaje": "30%",
+            "base": "Del ingreso tributario del año",
+            "limite_UVT": 3800,
+            "descripcion": "Que no deben exceder el treinta por ciento (30%) del ingreso tributario del año, y hasta un monto máximo de tres mil ochocientas (3.800) UVT por año"
+          },
+          "alcance_aportes": "El monto de los aportes voluntarios del empleador, trabajador o del partícipe independiente que se realicen a los seguros privados de pensiones y a los fondos de pensiones voluntarias, administrados por las entidades vigiladas por la Superintendencia Financiera de Colombia",
+          "tratamiento": "No harán parte de la base para aplicar la retención en la fuente y serán considerados como una renta exenta en el impuesto sobre la renta y complementario",
+          "periodo_permanencia": {
+            "años": 10,
+            "descripcion": "El retiro de los recursos para cualquier otro propósito, antes de un período mínimo de permanencia de diez (10) años contados a partir de la fecha de su consignación, implica que el trabajador pierda el beneficio",
+            "consecuencia": "Se efectúen, por parte de la respectiva entidad financiera, las retenciones inicialmente no realizadas en el año en que se percibió el ingreso y se realizó el aporte"
+          },
+          "retiros_autorizados": "Los retiros, parciales o totales, de aportes y rendimientos, que cumplan con el periodo de permanencia mínimo exigido o que se destinen para los fines autorizados en el artículo 126-1 del E.T., mantienen la condición de rentas exentas y no deben ser incluidos en la declaración de renta del periodo en que se efectuó el retiro",
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (ERI – Renta Líquida)",
+            "campo": "Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias y Aportes a cuentas AFC y AVC",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_48": {
+          "nombre": "Rentas exentas – Otras rentas exentas",
+          "condicion": "Si el valor de la casilla 46 es mayor que cero (0)",
+          "descripcion": "Registre en esta casilla las rentas exentas imputables diferentes a las registradas en la casilla 47",
+          "aplicables": "Aplican las rentas exentas del artículo 206 del E.T. cuando sea el caso",
+          "conciliacion_fiscal": {
+            "formato": "Conciliación fiscal Anexo 210 (ERI – Renta Líquida)",
+            "campo": "Rentas exentas menos Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias y Aportes a cuentas AFC y AVC",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_49": {
+          "nombre": "Total rentas exentas",
+          "formula": "Casilla 47 + Casilla 48"
+        }
+      },
+      "deducciones_imputables": {
+        "casilla_50": {
+          "nombre": "Deducciones imputables – Intereses de vivienda",
+          "condicion": "Si el valor de la casilla 46 es mayor que cero (0)",
+          "limite_UVT": 1200,
+          "base_legal": "Artículo 119 del E.T.",
+          "descripcion": "Valor de los intereses y/o corrección monetaria pagados sobre préstamos para adquisición de vivienda",
+          "requisitos": [
+            "Son deducibles los intereses que se paguen sobre préstamos para adquisición de vivienda del contribuyente",
+            "Siempre que el préstamo esté garantizado con hipoteca si el acreedor no está sometido a la vigilancia del Estado",
+            "Se cumplen las demás condiciones señaladas en el artículo 119 del E.T."
+          ],
+          "prestamos_UPAC_UVR": {
+            "limite_unidades": 4553,
+            "descripcion": "Cuando el préstamo de vivienda se haya adquirido en Unidades de Poder Adquisitivo Constante, UPAC, la deducción por intereses y corrección monetaria estará limitada para cada contribuyente al valor equivalente a las primeras cuatro mil quinientos cincuenta y tres (4.553) Unidades de Poder Adquisitivo Constante, UPAC (hoy UVR)",
+            "limite_anual": "Dicha deducción no podrá exceder anualmente del valor equivalente de mil (1.000) Unidades de Poder Adquisitivo Constante, hoy mil doscientas (1.200) UVT"
+          },
+          "conciliacion_fiscal": {
+            "campo": "Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_51": {
+          "nombre": "Deducciones imputables – Otras deducciones imputables",
+          "condicion": "Si el valor de la casilla 46 es mayor que cero (0)",
+          "concepto": "Las deducciones imputables son aquellas que, aunque no tengan relación directa con la actividad productora de renta, por expresa disposición legal son aceptadas como beneficio tributario",
+          "componentes": {
+            "1": {
+              "nombre": "Aportes a título de cesantía, realizados por los partícipes independientes",
+              "limite_UVT": 2500,
+              "restriccion": "Sin que excedan de un doceavo del ingreso gravable del respectivo año",
+              "base_legal": "Inciso sexto del artículo 126-1 del E.T."
+            },
+            "2": {
+              "nombre": "Pagos por salud",
+              "limite_mensual_UVT": 16,
+              "descripcion": "El trabajador podrá deducir los pagos por salud, siempre que el valor a disminuir mensualmente, en este último caso, no supere dieciséis (16) UVT mensuales",
+              "requisito": "Los pagos por salud deberán cumplir las condiciones de control que señale el Gobierno nacional",
+              "componentes_detalle": {
+                "a": "Los pagos efectuados por contratos de prestación de servicios a empresas de medicina prepagada vigiladas por la Superintendencia Nacional de Salud, que impliquen protección al trabajador, su cónyuge, sus hijos y/o dependientes",
+                "b": "Los pagos efectuados por seguros de salud, expedidos por compañías de seguros vigiladas por la Superintendencia Financiera de Colombia"
+              }
+            },
+            "3": {
+              "nombre": "Deducción por dependientes económicos",
+              "porcentaje": "10%",
+              "limite_mensual_UVT": 32,
+              "base_legal": "Numeral 1.1.2. del artículo 1.2.1.20.3. del DUR 1625/2016",
+              "condicion_especial": "Siempre y cuando dicha deducción no se haya solicitado en las Rentas de trabajo con ocasión a una relación laboral o legal y reglamentaria",
+              "categorias_dependientes": [
+                "Los hijos del contribuyente que tengan hasta 18 años de edad",
+                "Los hijos del contribuyente con edad entre 18 y 23 años en educación superior certificada",
+                "Los hijos del contribuyente mayores de 18 años que se encuentren en situación de dependencia originada en factores físicos o psicológicos certificados por Medicina Legal",
+                "El cónyuge o compañero permanente del contribuyente que se encuentre en situación de dependencia sea por ausencia de ingresos o ingresos en el año menores a doscientas sesenta (260) UVT, o por dependencia física/psicológica",
+                "Los padres y los hermanos del contribuyente que se encuentren en situación de dependencia, sean por ausencia de ingresos o ingresos en el año menores a doscientas sesenta (260) UVT, o por dependencia física/psicológica certificada por Medicina Legal"
+              ]
+            },
+            "4": {
+              "nombre": "Gravamen a los Movimientos Financieros – GMF",
+              "porcentaje_deducible": "50%",
+              "descripcion": "Será deducible el cincuenta por ciento (50%) del GMF efectivamente pagado por los contribuyentes durante el respectivo año gravable",
+              "independencia": "Independientemente que tenga o no relación de causalidad con la actividad económica del contribuyente",
+              "requisito": "Siempre que se encuentre debidamente certificado por el agente retenedor"
+            },
+            "5": {
+              "nombre": "Deducción de intereses sobre préstamos educativos del ICETEX",
+              "base_legal": "Inciso tercero del artículo 119 del E.T.",
+              "descripcion": "Serán deducibles los intereses sobre préstamos educativos del ICETEX dirigidos para la educación superior del contribuyente",
+              "limite_UVT": 100
+            }
+          },
+          "conciliacion_fiscal": {
+            "campo": "Deducciones menos Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_52": {
+          "nombre": "Total deducciones imputables",
+          "formula": "Casilla 50 + Casilla 51"
+        }
+      },
+      "rentas_exentas_deducciones_limitadas": {
+        "casilla_53": {
+          "nombre": "Rentas exentas y/o deducciones imputables (Limitadas)",
+          "metodologia": "Según instrucción para el cálculo de rentas exentas y deducciones imputables a la Renta líquida cédula general",
+          "fuentes": [
+            "Casilla 49",
+            "Casilla 52"
+          ],
+          "orden": "Después de Rentas de trabajo (casilla 41)",
+          "controles": [
+            "No puede superar el valor de la casilla 46 (Renta líquida)",
+            "No puede superar la sumatoria de las casillas 49 + 52"
+          ],
+          "conciliacion_fiscal": {
+            "campo": "Total rentas exentas y deducciones imputables",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_54": {
+          "nombre": "Renta líquida ordinaria del ejercicio",
+          "formula": "Casilla 43 - Casilla 44 - Casilla 45 - Casilla 53",
+          "condicion": "Resultado positivo"
+        },
+        "casilla_55": {
+          "nombre": "Pérdida líquida ordinaria del ejercicio",
+          "formula": "Casilla 44 + Casilla 45 - Casilla 43",
+          "condicion": "Resultado positivo"
+        },
+        "casilla_56": {
+          "nombre": "Compensaciones por pérdidas",
+          "descripcion": "Valor de las compensaciones por pérdidas acumuladas a 31 de diciembre del año gravable anterior al que se declara",
+          "aplicacion": "Relacionadas con las Rentas de trabajo que no provengan de una relación laboral o legal reglamentaria",
+          "requisitos": "Teniendo en cuenta los límites y porcentajes de compensación establecidos en las normas vigentes",
+          "caracteristicas": [
+            "Las pérdidas fiscales objeto de compensación no son susceptibles de reajuste fiscal",
+            "De conformidad con lo previsto en el artículo 147 del E.T.",
+            "De acuerdo con el artículo 1.2.1.20.6. del DUR 1625/2016, que fue modificado por el Decreto 1435 del 5 de noviembre de 2020"
+          ],
+          "conciliacion_fiscal": {
+            "campo": "Compensación de pérdidas fiscales",
+            "columna": "Rentas de trabajo por honorarios y compensación de servicios personales sujetos a costos y gastos"
+          }
+        },
+        "casilla_57": {
+          "nombre": "Renta líquida ordinaria",
+          "formula": "Casilla 54 - Casilla 56",
+          "condicion": "Resultado positivo"
+        }
+      }
+    },
+    "rentas_de_capital": {
+      "titulo": "SECCIÓN RENTAS DE CAPITAL",
+      "definicion": "Son ingresos por Renta de capital los obtenidos por concepto de intereses, rendimientos financieros, arrendamientos, regalías y explotación de la propiedad intelectual",
+      "casilla_58": {
+        "nombre": "Ingresos brutos de las Rentas de capital",
+        "descripcion": "Registre el valor total de los siguientes conceptos",
+        "componentes": {
+          "intereses_rendimientos_financieros": {
+            "nombre": "Intereses y rendimientos financieros",
+            "porcentaje": "100%",
+            "descripcion": "El cien por ciento (100%) de los rendimientos financieros gravados y no gravados obtenidos durante el año gravable",
+            "incluye": [
+              "Intereses y corrección monetaria",
+              "Intereses de depósitos a término",
+              "Descuentos de títulos con descuento",
+              "Rendimientos recibidos de los fondos de inversión, de valores y comunes",
+              "Componente inflacionario",
+              "Componente financiero del arrendamiento financiero o mercantil",
+              "Intereses recibidos por los contribuyentes y entidades pertenecientes al sector financiero vigiladas por la Superintendencia Financiera de Colombia",
+              "El ajuste por diferencia en cambio de los activos en moneda extranjera de los activos poseídos a 31 de diciembre del año gravable determinados de conformidad con el artículo 288 del E.T.",
+              "Intereses presuntivos (artículo 35 del E.T.)"
+            ]
+          },
+          "arrendamientos": {
+            "nombre": "Arrendamientos",
+            "descripcion": "El valor recibido por concepto de arrendamientos de bienes muebles e inmuebles"
+          },
+          "regalias_propiedad_intelectual": {
+            "nombre": "Regalías y propiedad intelectual",
+            "descripcion": "El valor recibido por los conceptos de beneficios o regalías de cualquier naturaleza provenientes de la explotación de toda especie de propiedad intelectual"
+          },
+          "ingresos_exterior": {
+            "nombre": "Ingresos del exterior por rentas de capital",
+            "descripcion": "Registre en esta casilla el valor de los ingresos obtenidos en el exterior por cualquiera de los conceptos anteriormente relacionados"
+          }
+        },
+        "conciliacion_fiscal": {
+          "formato": "Conciliación fiscal Anexo 210 (ERI – Renta Líquida)",
+          "campo": "Total Ingreso Cedular (valor fiscal)",
+          "columna": "Rentas de capital"
+        }
+      },
+      "casilla_59": {
+        "nombre": "Ingresos no constitutivos de renta de las Rentas de capital",
+        "descripcion": "Registre en esta casilla el valor de los ingresos no constitutivos de renta que aplican para las Rentas de capital",
+        "componentes": [
+          {
+            "nombre": "Aportes obligatorios Sistema General Seguridad Social en Pensiones",
+            "descripcion": "Los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones",
+            "base_legal": [
+              "Parágrafo 1 del artículo 135 de la Ley 100 de 1993, modificado por el artículo 12 de la Ley 1819 de 2016",
+              "Artículo 55 del E.T."
+            ],
+            "cotizaciones_voluntarias": {
+              "desde": "1° de enero de 2017",
+              "descripcion": "Las cotizaciones voluntarias que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones dentro del régimen de ahorro individual con solidaridad"
+            }
+          },
+          {
+            "nombre": "Componente inflacionario rendimientos financieros",
+            "aplicable_a": "Personas naturales y sucesiones ilíquidas, no obligadas a llevar libros de contabilidad",
+            "base_legal": "Artículos 38 y 41 del E.T.",
+            "descripcion": "El componente inflacionario de los rendimientos financieros percibidos"
+          },
+          {
+            "nombre": "Componente inflacionario fondos de inversión",
+            "descripcion": "El componente inflacionario de los rendimientos financieros que distribuyan los fondos de inversión, mutuos de inversión y de valores",
+            "base_legal": "Artículo 39 del E.T."
+          },
+          {
+            "nombre": "Otros ingresos no constitutivos de renta",
+            "descripcion": "Los demás ingresos no constitutivos de renta que apliquen a las Rentas de capital"
+          }
+        ],
+        "conciliacion_fiscal": {
+          "campo": "Ingresos no constitutivos de renta ni ganancia ocasional",
+          "columna": "Rentas de capital"
+        }
+      },
+      "casilla_60": {
+        "nombre": "Costos y deducciones procedentes de las Rentas de capital",
+        "descripcion": "Registre en esta casilla el valor total de los costos y gastos pagados o devengados contablemente durante el período, que tengan relación de causalidad con la generación de los ingresos de las Rentas de capital",
+        "requisitos": {
+          "descripcion": "Los costos y gastos que se pueden detraer corresponden a todas aquellas erogaciones que se incurran para la obtención del ingreso",
+          "cumplimiento": "Que cumplen todos los requisitos y limitaciones para su procedencia",
+          "base_legal": "De conformidad con lo establecido en los artículos 107 y 107-1 del E.T."
+        },
+        "impuestos_deducibles_2023": {
+          "desde": "Año gravable 2023 y siguientes",
+          "porcentaje": "100%",
+          "descripcion": "Es deducible el cien por ciento (100%) de los impuestos, tasas y contribuciones, que efectivamente se hayan pagado durante el año o período gravable por parte del contribuyente",
+          "requisito": "Que tengan relación de causalidad con su actividad económica",
+          "excepcion": "Con excepción del Impuesto sobre la renta y complementario"
+        },
+        "deduccion_primer_empleo": {
+          "porcentaje": "120%",
+          "descripcion": "Los contribuyentes que estén obligados a presentar declaración de renta y complementario, tienen derecho a deducir el ciento veinte por ciento (120%) de los pagos que realicen por concepto de salario",
+          "aplicable_a": "Empleados que sean menores de veintiocho (28) años",
+          "condicion": "Siempre y cuando se trate del primer empleo de la persona",
+          "limite_mensual_UVT": 115,
+          "periodo": "Procederá en el año gravable en el que el empleado sea contratado por el contribuyente",
+          "requisitos": [
+            "Debe tratarse de nuevos empleos",
+            "El empleado deberá ser contratado con posterioridad a la vigencia de la Ley 2010 de 2019",
+            "Ser menor de veintiocho (28) años",
+            "Ser el primer empleo de la persona"
+          ],
+          "certificacion": {
+            "emisor": "El Ministerio del Trabajo",
+            "descripcion": "Expedirá al contribuyente una certificación en la que se acredite que se trata del primer empleo de la persona menor de veintiocho (28) años",
+            "finalidad": "Como requisito para poder acceder a la deducción de que trata el artículo 108-5 del E.T."
+          },
+          "registro": "El Ministerio del Trabajo llevará un registro anualizado de todas las certificaciones de primer empleo que expida, con la identificación del empleado y del contribuyente",
+          "base_legal": "Artículo 108-5 del E.T."
+        },
+        "conciliacion_fiscal": {
+          "campo": "Costos más Gastos",
+          "columna": "Rentas de capital"
+        }
+      },
+      "casilla_61": {
+        "nombre": "Renta líquida de las Rentas de capital",
+        "formula": "Casilla 58 - Casilla 59 - Casilla 60",
+        "condicion": "Resultado positivo",
+        "descripcion": "Registre el resultado positivo de restar del valor de la casilla 58 el valor de la casilla 59 y el valor de la casilla 60"
+      },
+      "casilla_62": {
+        "nombre": "Rentas líquidas pasivas – ECE de las Rentas de capital",
+        "definicion_ECE": "Entidades Controladas del Exterior",
+        "base_legal_rentas_pasivas": "Artículo 884 del E.T.",
+        "libro_aplicable": "Libro VII del Estatuto Tributario",
+        "descripcion": "Las rentas pasivas a que se refiere el artículo 884 del E.T. provenientes de Entidades Controladas del Exterior (ECE), correspondientes a personas naturales, que cumplan con los presupuestos consagrados en el Libro VII del Estatuto Tributario, deberán ser declaradas en la correspondiente renta, según el origen",
+        "procedencia_reglas": "Respecto de estas rentas procederán las reglas de realización de ingresos, costos y deducciones, de que tratan los artículos 886, 887 y 888 del E.T.",
+        "quien_diligencia": {
+          "descripcion": "Esta casilla deberá ser diligenciada por los residentes fiscales colombianos que tengan, directa o indirectamente, una participación igual o superior al diez por ciento (10%) en el capital de la ECE o en los resultados de la misma",
+          "participacion_minima": "10%",
+          "tipo_participacion": "Directa o indirecta",
+          "base": "En el capital de la ECE o en los resultados de la misma"
+        },
+        "calculo": {
+          "descripcion": "Para ello, tome el valor de los ingresos pasivos y reste el valor de los costos, gastos y deducciones asociadas a dichos ingresos",
+          "base_legal": "De conformidad con lo señalado en los artículos 882 a 893 del E.T."
+        },
+        "inclusion_declaracion": {
+          "condicion": "Las rentas pasivas, cuyo valor sea igual o mayor que cero (0)",
+          "accion": "Deberán ser incluidas en las declaraciones del impuesto sobre la renta y complementario",
+          "proporcion": "De acuerdo con la participación que tengan en la ECE o en los resultados de la misma",
+          "sujetos": "Los sujetos obligados a este régimen de acuerdo con el artículo 883 del E.T."
+        },
+        "rentas_pasivas_negativas": {
+          "condicion": "Las rentas pasivas, cuyo valor sea inferior a cero (0)",
+          "tratamiento": "No se someten a las reglas previstas en el artículo 147 del E.T. para las pérdidas fiscales"
+        },
+        "conciliacion_fiscal": {
+          "campo": "Renta líquida pasiva - Entidades controladas del exterior sin residencia fiscal en Colombia (ECE)",
+          "columna": "Rentas de capital"
+        }
+      },
+      "rentas_exentas": {
+        "titulo": "RENTAS EXENTAS DE LAS RENTAS DE CAPITAL",
+        "casilla_63": {
+          "nombre": "Rentas exentas – Aportes voluntarios AFC, FVP y/o AVC",
+          "condicion": "Si el valor de la casilla 61 + casilla 62 es mayor que cero (0)",
+          "limite_porcentual": "30%",
+          "base": "Del ingreso tributario del año",
+          "limite_UVT": 3800,
+          "descripcion": "Registre en esta casilla el valor de los depósitos efectuados a las Cuentas de Ahorro para el Fomento de la Construcción – AFC, aportes voluntarios a los seguros privados de pensiones – FVP y/o a las Cuentas de Ahorro Voluntario Contractual – AVC, que no deben exceder el treinta por ciento (30%) del ingreso tributario del año ni ser mayores a tres mil ochocientas (3.800) UVT",
+          "alcance": "El monto de los aportes voluntarios del empleador, trabajador o del partícipe independiente que se realicen a los seguros privados de pensiones y a los fondos de pensiones voluntarias, administrados por las entidades vigiladas por la Superintendencia Financiera de Colombia",
+          "tratamiento": "No harán parte de la base para aplicar la retención en la fuente y serán considerados como una renta exenta en el impuesto sobre la renta y complementario",
+          "periodo_permanencia": {
+            "años": 10,
+            "consecuencia_retiro": "El retiro de los recursos para cualquier otro propósito, antes de un período mínimo de permanencia de diez (10) años contados a partir de la fecha de su consignación, implica que el trabajador pierda el beneficio y que se efectúen, por parte de la respectiva entidad financiera, las retenciones inicialmente no realizadas en el año en que se percibió el ingreso y se realizó el aporte"
+          },
+          "retiros_autorizados": "Los retiros, parciales o totales, de aportes y rendimientos, que cumplan con el periodo de permanencia mínimo exigido o que se destinen para los fines autorizados en el artículo 126-1 del E.T., mantienen la condición de rentas exentas y no deben ser incluidos en la declaración de renta del periodo en que se efectuó el retiro",
+          "conciliacion_fiscal": {
+            "campo": "Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias y Aportes a cuentas AFC y AVC",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_64": {
+          "nombre": "Rentas exentas – Otras rentas exentas",
+          "condicion": "Si el valor de la casilla 61 + casilla 62 es mayor que cero (0)",
+          "descripcion": "Registre en esta casilla las rentas exentas imputables a las Rentas de capital diferentes a las registradas en la casilla 63",
+          "concepto_renta_exenta": "La renta exenta es un beneficio que recae sobre la renta líquida, es decir, es una porción de la renta líquida que se resta de esta, para obtener la renta líquida gravable",
+          "rentas_exentas_convenios": {
+            "nombre": "Rentas exentas en virtud de convenios para evitar la doble tributación y las señaladas por ley",
+            "decision_578_CAN": {
+              "descripcion": "Tratándose de servicios prestados en los países miembros de la Comunidad Andina de Naciones – CAN, por personas naturales residentes en Colombia",
+              "regimen": "Se debe observar el régimen previsto en la Decisión 578 de 2004 de la Comisión de la Comunidad Andina",
+              "principio": "En donde se prevé que las rentas provenientes de la prestación de servicios personales o empresariales solo serán gravables en el territorio en el cual tales servicios fueren prestados",
+              "excepciones": "Salvo los casos de excepción previstos en la misma Decisión",
+              "consecuencia": "En consecuencia, las rentas obtenidas por la prestación de servicios en los países miembros de la CAN, son consideradas exentas en Colombia en atención a la filosofía fundamental de la Decisión de evitar la doble tributación y prevenir la evasión fiscal en los países miembros"
+            }
+          },
+          "conciliacion_fiscal": {
+            "campo": "Rentas exentas menos Rentas exentas Aportes voluntarios a los seguros privados de pensiones y a los fondos de pensiones voluntarias y Aportes a cuentas AFC y AVC",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_65": {
+          "nombre": "Total rentas exentas de las Rentas de capital",
+          "formula": "Casilla 63 + Casilla 64"
+        }
+      },
+      "deducciones_imputables": {
+        "titulo": "DEDUCCIONES IMPUTABLES A LAS RENTAS DE CAPITAL",
+        "casilla_66": {
+          "nombre": "Deducciones imputables – Intereses de vivienda",
+          "condicion": "Si el valor de la casilla 61 + casilla 62 es mayor que cero (0)",
+          "limite_UVT": 1200,
+          "base_legal": "Artículo 119 del E.T.",
+          "descripcion": "Registre en esta casilla el valor de los intereses y/o corrección monetaria pagados sobre préstamos para adquisición de vivienda",
+          "requisitos": [
+            "Son deducibles los intereses que se paguen sobre préstamos para adquisición de vivienda del contribuyente",
+            "Siempre que el préstamo esté garantizado con hipoteca si el acreedor no está sometido a la vigilancia del Estado",
+            "Se cumplen las demás condiciones señaladas en el artículo 119 del E.T."
+          ],
+          "prestamos_UPAC_UVR": {
+            "limite_unidades": 4553,
+            "descripcion": "Cuando el préstamo de vivienda se haya adquirido en Unidades de Poder Adquisitivo Constante, la deducción por intereses y corrección monetaria estará limitada para cada contribuyente al valor equivalente a las primeras cuatro mil quinientos cincuenta y tres (4.553) Unidades de Poder Adquisitivo Constante UPAC (hoy UVR)",
+            "limite_anual_UVT": 1200
+          },
+          "conciliacion_fiscal": {
+            "campo": "Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_67": {
+          "nombre": "Deducciones imputables – Otras deducciones imputables",
+          "condicion": "Si el valor de la casilla 61 + casilla 62 es mayor que cero (0)",
+          "concepto": "Las deducciones imputables son aquellas que, aunque no tengan relación directa con la actividad productora de renta, por expresa disposición legal son aceptadas como beneficio tributario",
+          "componentes": {
+            "1": {
+              "nombre": "Gravamen a los Movimientos Financieros – GMF",
+              "porcentaje": "50%",
+              "descripcion": "Será deducible el cincuenta por ciento (50%) del Gravamen a los Movimientos Financieros – GMF efectivamente pagado por los contribuyentes durante el respectivo año gravable",
+              "independencia": "Independientemente que tenga o no relación de causalidad con la actividad económica del contribuyente",
+              "requisito": "Siempre que se encuentre debidamente certificado por el agente retenedor"
+            },
+            "2": {
+              "nombre": "Aportes a título de cesantía, realizados por los partícipes independientes",
+              "limite_UVT": 2500,
+              "restriccion": "Sin que excedan de un doceavo del ingreso gravable del respectivo año",
+              "base_legal": "Inciso sexto del artículo 126-1 del E.T."
+            },
+            "3": {
+              "nombre": "Deducciones intereses sobre préstamos educativos del ICETEX",
+              "descripcion": "Estarán sujetos a las deducciones de intereses que se paguen sobre préstamos educativos del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior (ICETEX)",
+              "finalidad": "Dirigidos para la educación superior del contribuyente",
+              "limite_UVT": 100
+            }
+          },
+          "conciliacion_fiscal": {
+            "campo": "Deducciones menos Deducción por pagos de intereses de vivienda",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_68": {
+          "nombre": "Total deducciones imputables a las Rentas de capital",
+          "formula": "Casilla 66 + Casilla 67"
+        }
+      },
+      "rentas_exentas_deducciones_limitadas": {
+        "casilla_69": {
+          "nombre": "Rentas exentas y/o deducciones imputables (Limitadas)",
+          "metodologia": "De acuerdo con la instrucción para el cálculo de las rentas exentas y deducciones imputables a la renta líquida cédula general",
+          "distribucion": "El SI de Diligenciamiento distribuirá en esta casilla el valor de las rentas exentas y deducciones imputables a las que tiene derecho",
+          "fuentes": [
+            "Casilla 65 (Total rentas exentas)",
+            "Casilla 68 (Total deducciones imputables)"
+          ],
+          "orden": "Teniendo en cuenta el saldo de las rentas exentas y deducciones imputables, una vez restadas las rentas exentas y/o deducciones imputables (Limitadas) de las Rentas de trabajo (casilla 41), las Rentas de trabajo que no provengan de una relación laboral o legal y reglamentaria (casilla 53)",
+          "controles": [
+            "No puede superar el valor de la suma de las casillas 61 (Renta líquida) y 62 (Rentas líquidas pasivas – ECE)",
+            "Ni de la sumatoria de los valores de las casillas 65 y 68"
+          ],
+          "conciliacion_fiscal": {
+            "campo": "Total rentas exentas y deducciones imputables (limitadas)",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_70": {
+          "nombre": "Renta líquida ordinaria del ejercicio",
+          "formula": "Casilla 58 + Casilla 62 - Casilla 59 - Casilla 60 - Casilla 69",
+          "condicion": "Resultado positivo"
+        },
+        "casilla_71": {
+          "nombre": "Pérdida líquida del ejercicio",
+          "formula": "Casilla 59 + Casilla 60 - Casilla 58 - Casilla 62",
+          "condicion": "Resultado positivo"
+        },
+        "casilla_72": {
+          "nombre": "Compensaciones por pérdidas de las Rentas de capital",
+          "condicion": "Si el valor de la casilla 70 es mayor que cero",
+          "descripcion": "Puede solicitar el valor de las pérdidas incurridas dentro de las Rentas de capital del año gravable anterior al que se declara",
+          "aplicacion": "Pudiendo ser compensadas contra las Rentas de capital, en los siguientes períodos gravables",
+          "requisitos": "Teniendo en cuenta los límites y porcentajes de compensación establecidas en las normas vigentes",
+          "caracteristicas": [
+            "Las pérdidas fiscales objeto de compensación no son susceptibles de reajuste fiscal",
+            "De conformidad con lo previsto en el artículo 147 del E.T.",
+            "De acuerdo con el artículo 1.2.1.20.6. del DUR 1625/2016, que fue modificado por el Decreto 1435 del 5 de noviembre de 2020"
+          ],
+          "conciliacion_fiscal": {
+            "campo": "Compensación de pérdidas fiscales",
+            "columna": "Rentas de capital"
+          }
+        },
+        "casilla_73": {
+          "nombre": "Renta líquida ordinaria de las Rentas de capital",
+          "formula": "Casilla 70 - Casilla 72",
+          "condicion": "Resultado positivo"
+        }
+      }
+    },
+    "rentas_no_laborales": {
+      "titulo": "SECCIÓN RENTAS NO LABORALES",
+      "definicion": "Se consideran ingresos de las Rentas no laborales todos los que no se clasifiquen expresamente en ninguna de las demás rentas",
+      "casilla_74": {
+        "nombre": "Ingresos brutos de las Rentas no laborales",
+        "descripcion": "Incluya el valor total de los siguientes conceptos",
+        "componentes": {
+          "ingresos_no_laborales": "Registre el valor de los ingresos recibidos en el periodo que no se clasifiquen expresamente en ninguna de las demás rentas y aquellos ingresos que no cumplan con la definición de servicios personales",
+          "ingresos_actividad_economica": "Incluya también en esta casilla el total de ingresos brutos (gravados y no gravados) obtenidos durante el año gravable que correspondan al desarrollo ordinario de su actividad económica",
+          "contratos_concesion": "Para efectos fiscales tenga en cuenta el tratamiento previsto en el artículo 32 del E.T. para los contratos de concesión",
+          "momentos_realizacion": "Así como los momentos de realización del ingreso que regula el artículo 28 del E.T. y el numeral 9 del artículo 290 del E.T. Régimen de Transición",
+          "enajenacion_activos": "Igualmente, incluya en esta casilla aquellos conceptos a que haya lugar y que no se hayan registrado previamente, tales como los obtenidos en la enajenación de activos diferentes a los inventarios, si fueron poseídos por menos de dos años",
+          "otros_conceptos": [
+            "Indemnizaciones",
+            "Entre otros"
+          ],
+          "ingresos_inmuebles": "Los ingresos provenientes de la enajenación de bienes inmuebles se entienden realizados en la fecha de la escritura pública correspondiente conforme lo señala el numeral 2 del artículo 27 del E.T.",
+          "apoyos_economicos": "Los apoyos económicos no reembolsables o condonados, entregados por el Estado o financiados con recursos públicos, para financiar programas educativos entregados a la persona natural. La persona natural deberá declarar estos apoyos en las Rentas no laborales. En el evento en que el apoyo económico sea otorgado en razón a una relación laboral, legal y reglamentaria, deberá ser declarado en las Rentas de trabajo",
+          "recompensas": "También incluya los valores recibidos por recompensas",
+          "ingresos_exterior": "Registre en esta casilla el valor de los ingresos obtenidos en el exterior que no estén clasificados expresamente en ninguna de las demás rentas"
+        },
+        "conciliacion_fiscal": {
+          "campo": "Ingresos netos Actividad Industrial, comercial y servicios (columna valor fiscal)",
+          "seccion": "Rentas no laborales"
+        }
+      },
+      "casilla_75": {
+        "nombre": "Devoluciones, rebajas y descuentos",
+        "descripcion": "Registre en esta casilla las devoluciones, rebajas y descuentos de las Rentas no laborales",
+        "tratamiento": "Teniendo en cuenta que estos conceptos van a disminuir los ingresos ordinarios en el año o período gravable, que fueron susceptibles de producir un incremento neto del patrimonio en el momento de su percepción",
+        "conciliacion_fiscal": {
+          "campo": "Devoluciones, rebajas y descuentos (columna valor fiscal)"
+        }
+      },
+      "casilla_76": {
+        "nombre": "Ingresos no constitutivos de renta",
+        "componentes": [
+          {
+            "nombre": "Apoyos económicos no reembolsables o condonados",
+            "descripcion": "Registre aquí los ingresos por concepto de apoyos económicos no reembolsables o condonados, entregados por el Estado o financiados por recursos públicos, para financiar programas educativos",
+            "exclusion": "Diferentes a los registrados como ingresos en las casillas 32 y 33"
+          },
+          {
+            "nombre": "Utilidades enajenación acciones/participaciones ECE",
+            "descripcion": "También serán consideradas como ingresos no constitutivos de renta al momento de su realización para efectos fiscales por parte del sujeto obligado al régimen de ECE de conformidad con el artículo 883 del E.T. en la proporción a que a ellas tuvieran derecho, las rentas provenientes de la enajenación de las acciones o participaciones en la ECE y que correspondan a utilidades que estuvieron sometidas a tributación de conformidad con lo previsto en el Título I del Libro VII del Estatuto Tributario"
+          },
+          {
+            "nombre": "Utilidades enajenación acciones bolsa de valores",
+            "descripcion": "Registre las utilidades provenientes de la enajenación de acciones inscritas en una bolsa de valores colombiana, de las cuales sea titular",
+            "limite": "Cuando dicha enajenación no supere el tres por ciento (3%) de las acciones en circulación de la respectiva sociedad, durante un mismo año gravable",
+            "base_legal": "Artículo 36-1 del E.T."
+          },
+          {
+            "nombre": "Aportes obligatorios pensiones",
+            "descripcion": "Los aportes obligatorios que efectúen los trabajadores y afiliados al Sistema General de Seguridad Social en Pensiones",
+            "base_legal": [
+              "Parágrafo 1 del artículo 135 de la Ley 100 de 1993",
+              "Artículo 55 del E.T."
+            ]
+          },
+          {
+            "nombre": "Cotizaciones voluntarias RAIS",
+            "desde": "Año gravable 2019",
+            "porcentaje": "25%",
+            "limite_UVT": 2500,
+            "descripcion": "Las cotizaciones voluntarias al régimen de ahorro individual con solidaridad será un ingreso no constitutivo de renta ni de ganancia ocasional para el aportante, en un porcentaje que no exceda el veinticinco por ciento (25%) del ingreso tributario anual limitado a dos mil quinientas (2500) UVT",
+            "retiros": "Los retiros parciales o totales de las cotizaciones voluntarias de los afiliados al régimen de ahorro individual con solidaridad para fines distintos a la obtención de una mayor pensión o un retiro anticipado constituirán renta gravada en el año en que sean retirados"
+          },
+          {
+            "nombre": "Valores recibidos por recompensas",
+            "descripcion": "No constituye renta ni ganancia ocasional para los beneficiarios del pago, toda retribución en dinero, recibida de organismos estatales, como recompensa por el suministro de datos e informaciones especiales a las secciones de inteligencia de los organismos de seguridad del Estado, sobre ubicación de antisociales o conocimiento de sus actividades delictivas, en un lugar determinado"
+          }
+        ],
+        "conciliacion_fiscal": {
+          "campo": "Ingresos no constitutivos de renta ni ganancia ocasional",
+          "columna": "Rentas no laborales"
+        }
+      },
+      "casilla_77": {
+        "nombre": "Costos y deducciones procedentes",
+        "incluye": [
+          "Costo de ventas",
+          "Gastos de administración",
+          "Gastos de distribución y ventas",
+          "Gastos financieros"
+        ],
+        "impuestos_deducibles_2023": {
+          "porcentaje": "100%",
+          "descripcion": "Para el año gravable 2023 y siguientes es deducible el cien por ciento (100%) de los impuestos, tasas y contribuciones, que efectivamente se hayan pagado durante el año o período gravable",
+          "excepcion": "Con excepción del Impuesto sobre la renta y complementario"
+        },
+        "deduccion_primer_empleo": {
+          "porcentaje": "120%",
+          "limite_UVT": 115,
+          "base_legal": "Artículo 108-5 del E.T."
+        },
+        "deduccion_transitoria_san_andres": {
+          "año": "2023",
+          "porcentaje": "150%",
+          "aplicable_a": "Personas naturales y jurídicas nacionales que desarrollen actividades de hotelería, agencia de viajes, tiempo compartido y turismo receptivo",
+          "requisitos": [
+            "Obligados a presentar declaración de renta y complementario",
+            "Cuenten con un establecimiento de comercio domiciliado en San Andrés Isla, Providencia y/o Santa Catalina con anterioridad al 16 de noviembre de 2020",
+            "Tengan a su cargo trabajadores residentes en estas entidades territoriales"
+          ],
+          "base_legal": "Artículo 28 de la Ley 2277 de 2022"
+        },
+        "conciliacion_fiscal": {
+          "campo": "Costos más Gastos",
+          "columna": "Rentas no laborales"
+        }
+      },
+      "casilla_78": {
+        "nombre": "Renta líquida",
+        "formula": "Casilla 74 - Casilla 75 - Casilla 76 - Casilla 77",
+        "condicion": "Resultado positivo"
+      },
+      "casilla_79": {
+        "nombre": "Rentas líquidas pasivas – ECE",
+        "descripcion": "Las rentas pasivas del artículo 884 del E.T. provenientes de Entidades Controladas del Exterior (ECE)",
+        "participacion_minima": "10%",
+        "base_legal": "Artículos 882 a 893 del E.T.",
+        "rentas_negativas": "Las rentas pasivas cuyo valor sea inferior a cero (0), no se someten a las reglas previstas en el artículo 147 del E.T. para las pérdidas fiscales",
+        "conciliacion_fiscal": {
+          "campo": "Renta líquida pasiva - Entidades controladas del exterior sin residencia fiscal en Colombia (ECE)",
+          "columna": "Rentas no laborales"
+        }
+      },
+      "rentas_exentas": {
+        "casilla_80": {
+          "nombre": "Aportes voluntarios AFC, FVP y/o AVC",
+          "limite_porcentual": "30%",
+          "limite_UVT": 3800
+        },
+        "casilla_81": {
+          "nombre": "Otras rentas exentas",
+          "incluye": [
+            "Rentas exentas en virtud de convenios para evitar la doble tributación",
+            "Rentas exentas por servicios hoteleros (numerales 3 y 4 del artículo 207-2 del E.T.)"
+          ]
+        },
+        "casilla_82": {
+          "nombre": "Total rentas exentas",
+          "formula": "Casilla 80 + Casilla 81"
+        }
+      },
+      "deducciones_imputables": {
+        "casilla_83": {
+          "nombre": "Intereses de vivienda",
+          "limite_UVT": 1200
+        },
+        "casilla_84": {
+          "nombre": "Otras deducciones imputables",
+          "incluye": [
+            "GMF 50%",
+            "Aportes cesantía hasta 2500 UVT",
+            "Intereses ICETEX hasta 100 UVT"
+          ]
+        },
+        "casilla_85": {
+          "nombre": "Total deducciones imputables",
+          "formula": "Casilla 83 + Casilla 84"
+        }
+      },
+      "rentas_exentas_deducciones_limitadas": {
+        "casilla_86": {
+          "nombre": "Rentas exentas y/o deducciones imputables (Limitadas)",
+          "distribucion": "Última en el orden de distribución"
+        },
+        "casilla_87": {
+          "nombre": "Renta líquida ordinaria del ejercicio",
+          "formula": "Casilla 74 + Casilla 79 - Casilla 75 - Casilla 76 - Casilla 77 - Casilla 86"
+        },
+        "casilla_88": {
+          "nombre": "Pérdida líquida del ejercicio",
+          "formula": "Casilla 75 + Casilla 76 + Casilla 77 - Casilla 74 - Casilla 79"
+        },
+        "casilla_89": {
+          "nombre": "Compensaciones por pérdidas",
+          "descripcion": "Pérdidas incurridas dentro de las Rentas no laborales del año gravable anterior"
+        },
+        "casilla_90": {
+          "nombre": "Renta líquida ordinaria",
+          "formula": "Casilla 87 - Casilla 89"
+        }
+      }
+    },
+    "resumen_cedula_general": {
+      "casilla_91": {
+        "nombre": "Renta líquida cédula general",
+        "formula": "Casilla 41 + Casilla 42 + Casilla 53 + Casilla 57 + Casilla 69 + Casilla 73 + Casilla 86 + Casilla 90"
+      },
+      "casilla_92": {
+        "nombre": "Rentas exentas y deducciones imputables limitadas",
+        "formula": "Casilla 28 + Casilla 41 + Casilla 53 + Casilla 69 + Casilla 86 + Casilla 139",
+        "limite_porcentual": "40%",
+        "limite_UVT": 1340,
+        "excepciones": [
+          "Rentas exentas numerales 6, 7, 8 y 9 del artículo 206 del E.T.",
+          "Prima especial y prima de costo de vida (artículo 206-1 del E.T.)",
+          "Rentas derivadas de servicios hoteleros (numerales 3 y 4 del artículo 207-2 del E.T.)",
+          "Rentas exentas en virtud de convenio para evitar la doble tributación",
+          "Rentas provenientes de la Decisión 578 de 2004 CAN",
+          "Obtenidas en virtud de acuerdos multilaterales"
+        ],
+        "adicion_dependientes": {
+          "monto_UVT": 72,
+          "maximo_dependientes": 4,
+          "aplicacion": "Para el año gravable 2023 y siguientes"
+        },
+        "compras_factura_electronica": {
+          "porcentaje": "1%",
+          "limite_UVT": 240,
+          "requisitos": [
+            "Que la adquisición no haya sido solicitada como costo o deducción",
+            "Que esté soportada con factura electrónica con validación previa",
+            "Que la factura se encuentre pagada mediante medios electrónicos",
+            "Que la factura haya sido expedida por sujetos obligados"
+          ]
+        }
+      },
+      "casilla_93": {
+        "nombre": "Renta líquida ordinaria cédula general",
+        "formula": "Casilla 91 - Casilla 92",
+        "condicion": "Resultado positivo"
+      },
+      "casilla_94": {
+        "nombre": "Compensaciones por pérdidas año gravable 2018 y anteriores",
+        "descripcion": "Personas naturales que tengan pérdidas fiscales declaradas en los periodos gravables 2018 y anteriores y que no se hayan compensado",
+        "aplicacion": "Podrán imputarlas contra la cédula general sin afectar las rentas de trabajo",
+        "base_legal": "Parágrafo transitorio del artículo 330 del E.T. y artículo 1.2.1.20.6. del DUR 1625/2016",
+        "conciliacion_fiscal": {
+          "campo": "Compensación de pérdidas fiscales",
+          "columna": "Cédula general"
+        }
+      },
+      "casilla_95": {
+        "nombre": "Compensaciones por exceso de renta presuntiva",
+        "descripcion": "Las personas naturales residentes contribuyentes del impuesto sobre la renta, podrán compensar los excesos en renta presuntiva",
+        "hasta": "El valor de renta líquida ordinaria cédula general del periodo fiscal correspondiente",
+        "base_legal": "Artículo 189 del E.T.",
+        "excesos_2016": "Las personas naturales residentes que a 31 de diciembre de 2016 poseían excesos de renta presuntiva no compensados y que se encuentren dentro del plazo establecido en el parágrafo del artículo 189 del E.T., los compensarán hasta el valor de la renta líquida ordinaria cédula general del periodo fiscal correspondiente",
+        "excedente": "Si queda algún excedente no compensado, se aplicará según el mismo procedimiento en los periodos gravables siguientes hasta agotar el saldo o el término establecido",
+        "conciliacion_fiscal": {
+          "campo": "Compensación del exceso de renta presuntiva sobre renta ordinaria",
+          "columna": "Cédula general"
+        }
+      },
+      "casilla_96": {
+        "nombre": "Rentas gravables",
+        "incluye": [
+          "Rentas líquidas gravables (activos omitidos y/o pasivos inexistentes y/o recuperación de deducciones)",
+          "Renta por comparación patrimonial",
+          "Renta líquida gravable producto de adición de ingresos presuntos por omisión del registro de compras, entre otros"
+        ],
+        "tratamiento": "No permiten ningún tipo de renta exenta ni deducción",
+        "conciliacion_fiscal": {
+          "campo": "Rentas gravables",
+          "columna": "Cédula general"
+        }
+      },
+      "casilla_97": {
+        "nombre": "Renta líquida gravable cédula general",
+        "formula": "Casilla 93 + Casilla 96 - Casilla 94 - Casilla 95",
+        "condicion": "Resultado positivo"
+      },
+      "casilla_98": {
+        "nombre": "Renta presuntiva",
+        "tarifa": "0%",
+        "base": "Patrimonio líquido del año anterior depurado",
+        "exclusiones": [
+          "Valor patrimonial neto de aportes y acciones en sociedades nacionales",
+          "Valor patrimonial neto de bienes afectados por fuerza mayor o caso fortuito",
+          "Valor patrimonial neto de bienes vinculados a empresas en período improductivo",
+          "Valor patrimonial neto de bienes vinculados a minería distinta de hidrocarburos",
+          "Primeras 19.000 UVT de activos destinados al sector agropecuario",
+          "Primeras 8.000 UVT del valor de la vivienda de habitación",
+          "Valor patrimonial neto de bienes destinados a actividades deportivas de clubes"
+        ],
+        "procedimiento": [
+          "1. Depurar el patrimonio líquido del año anterior según artículo 189 del E.T.",
+          "2. Aplicar la tarifa del 0%",
+          "3. Sumar la renta gravable generada por los activos exceptuados",
+          "4. Detraer las rentas exentas en proporción a los montos máximos tomados en Rentas de trabajo no laboral, capital y no laborales",
+          "5. Comparar contra la renta líquida gravable de la Cédula general"
+        ],
+        "conciliacion_fiscal": {
+          "campo": "Renta presuntiva período gravable",
+          "columna": "Valor fiscal"
+        }
+      }
+    }
+  },
+  "cedula_de_pensiones": {
+    "titulo": "SECCIÓN CÉDULA DE PENSIONES",
+    "definicion": "Son ingresos de esta cédula las pensiones de jubilación, invalidez, vejez, de sobrevivientes y sobre riesgos laborales, así como aquellas provenientes de indemnizaciones sustitutivas de las pensiones o las devoluciones de saldos de ahorro pensional",
+    "casilla_99": {
+      "nombre": "Ingresos brutos por rentas de pensiones del país y del exterior",
+      "ingresos_por_pensiones": "Pensiones de jubilación, invalidez, vejez, de sobrevivientes y sobre riesgos laborales, indemnizaciones sustitutivas, devoluciones de saldos de ahorro pensional",
+      "fuerzas_militares_policia": "Asignación de retiro y de pensiones de las Fuerzas Militares y de la Policía Nacional",
+      "pensiones_exterior": "Pensiones o su equivalente que correspondan a rentas pensionales de fuente extranjera"
+    },
+    "casilla_100": {
+      "nombre": "Ingresos no constitutivos de renta",
+      "incluye": [
+        "Aportes obligatorios salud",
+        "Contribuciones Fondo Solidaridad Pensional"
+      ]
+    },
+    "casilla_101": {
+      "nombre": "Renta líquida",
+      "formula": "Casilla 99 - Casilla 100"
+    },
+    "casilla_102": {
+      "nombre": "Rentas exentas de pensiones",
+      "limite_mensual_UVT": 1000,
+      "descripcion": "Valor de las pensiones exento que no supere 1.000 UVT mensuales, porción efectivamente recibida después de aportes a salud",
+      "gravabilidad": "Gravadas en la parte que exceda de 1.000 UVT",
+      "mismo_tratamiento_indemnizaciones": "Indemnizaciones sustitutivas y devoluciones de saldos de ahorro pensional"
+    },
+    "casilla_103": {
+      "nombre": "Renta líquida gravable cédula de pensiones",
+      "formula": "Casilla 101 - Casilla 102"
+    }
+  },
+  "cedula_dividendos_participaciones": {
+    "titulo": "SECCIÓN CÉDULA DE DIVIDENDOS Y/O PARTICIPACIONES",
+    "casilla_104": {
+      "nombre": "Dividendos 2016 y anteriores y otros",
+      "tratamiento_bifurcado": true
+    },
+    "casilla_105": {
+      "nombre": "Ingresos no constitutivos de renta"
+    },
+    "casilla_106": {
+      "nombre": "Renta líquida ordinaria año 2016 y anteriores",
+      "formula": "Casilla 104 - Casilla 105"
+    },
+    "casilla_107": {
+      "nombre": "1a Subcédula 2017+ numeral 3 art 49",
+      "tarifa": "Artículo 242 E.T. inciso 1"
+    },
+    "casilla_108": {
+      "nombre": "2a Subcédula 2017+ parágrafo 2 art 49",
+      "tarifa": "Artículo 242 E.T. inciso 2"
+    },
+    "casilla_109": {
+      "nombre": "Dividendos del exterior",
+      "incluye_rentas_pasivas_ECE": true
+    },
+    "casilla_110": {
+      "nombre": "Rentas exentas casilla 109",
+      "decision_578_CAN": true
+    },
+    "casilla_111": {
+      "nombre": "Renta líquida gravable total",
+      "formula": "Mayor(97,98) + 103 + 107 + 108 - 118"
+    }
+  },
+  "ganancias_ocasionales": {
+    "titulo": "SECCIÓN GANANCIAS OCASIONALES",
+    "casilla_112": {
+      "nombre": "Ingresos por ganancias ocasionales del país y del exterior",
+      "incluye": [
+        "Enajenación de bienes del activo fijo por término >= 2 años",
+        "Liquidación de sociedades con duración >= 2 años",
+        "Herencias, legados, donaciones o actos jurídicos inter vivos a título gratuito",
+        "Porción conyugal",
+        "Rifas, loterías y similares (valor del premio sin restar retención)",
+        "Indemnizaciones por seguros de vida que superen 3.250 UVT"
+      ],
+      "realizacion_inmuebles": "Fecha de la escritura pública (numeral 2 art. 27 E.T.)",
+      "ganancias_ECE": "Enajenación de acciones/participaciones en ECE con utilidades sometidas a tributación"
+    },
+    "casilla_113": {
+      "nombre": "Costos por ganancias ocasionales",
+      "descripcion": "Costo de los activos fijos enajenados según Capítulo II del Título I del Libro 1 del E.T."
+    },
+    "casilla_114": {
+      "nombre": "Ganancias ocasionales no gravadas y exentas",
+      "incluye": [
+        "Enajenación acciones ECE con utilidades ya tributadas (no constitutivo)",
+        "Indemnizaciones seguros de vida <= 3.250 UVT",
+        "Primeras 13.000 UVT valor inmueble vivienda habitación del causante",
+        "Primeras 6.500 UVT bienes inmuebles diferentes a vivienda",
+        "Primeras 3.250 UVT porción conyugal, herencia o legado",
+        "20% valor bienes recibidos por no legitimarios (máximo 1.625 UVT)",
+        "Libros, ropas, utensilios uso personal, mobiliario casa causante",
+        "Utilidad venta casa/apartamento (primeras 5.000 UVT con requisitos AFC)"
+      ]
+    },
+    "casilla_115": {
+      "nombre": "Ganancias ocasionales gravables",
+      "formula": "Casilla 112 - Casilla 113 - Casilla 114",
+      "nota": "Si el resultado es negativo, el valor será cero (0)"
+    }
+  },
+  "liquidacion_privada": {
+    "titulo": "SECCIÓN LIQUIDACIÓN PRIVADA",
+    "impuesto_rentas_liquidas": {
+      "casilla_116": {
+        "nombre": "Cédula general, de pensiones y dividendos (base casilla 111)",
+        "aplicacion": "Tarifa personas naturales residentes del artículo 241 E.T.",
+        "condicion": "Cuando casilla 97 > casilla 98",
+        "tabla_tarifas": {
+          "rango_1": {
+            "desde_UVT": 0,
+            "hasta_UVT": 1090,
+            "tarifa": "0%",
+            "impuesto": "0"
+          },
+          "rango_2": {
+            "desde_UVT": 1090,
+            "hasta_UVT": 1700,
+            "tarifa": "19%",
+            "impuesto": "(Base - 1090) x 19%"
+          },
+          "rango_3": {
+            "desde_UVT": 1700,
+            "hasta_UVT": 4100,
+            "tarifa": "28%",
+            "impuesto": "(Base - 1700) x 28% + 116 UVT"
+          },
+          "rango_4": {
+            "desde_UVT": 4100,
+            "hasta_UVT": "En adelante",
+            "tarifa": "33%",
+            "impuesto": "(Base - 4100) x 33% + 788 UVT"
+          }
+        }
+      },
+      "casilla_117": {
+        "nombre": "Renta presuntiva, de pensiones y dividendos (base casilla 111)",
+        "aplicacion": "Tarifa artículo 241 E.T.",
+        "condicion": "Cuando casilla 98 > casilla 97"
+      },
+      "casilla_118": {
+        "nombre": "Por dividendos 2017+ 2a subcédula (Art 240 E.T)",
+        "base": "Casilla 108",
+        "tarifa_general_2023": "35%",
+        "nota": "Pueden aplicarse tarifas diferenciales según artículo 240 E.T."
+      },
+      "casilla_119": {
+        "nombre": "Por dividendos 2016 (base casilla 106)",
+        "tarifa_aplicable": "Artículo 241 E.T. vigente para 2016 y anteriores"
+      },
+      "casilla_120": {
+        "nombre": "Por dividendos del exterior (base casillas 109-110)",
+        "tarifa": "35%"
+      },
+      "casilla_121": {
+        "nombre": "Total impuesto sobre las rentas líquidas gravables",
+        "formula": "Casilla 116 + 117 + 118 + 119 + 120"
+      }
+    },
+    "descuentos_tributarios": {
+      "casilla_122": {
+        "nombre": "Impuestos pagados en el exterior",
+        "limite": "No exceder el impuesto colombiano por esas mismas rentas",
+        "incluye_ECE": "Los residentes fiscales con control sobre ECE tienen derecho a descuentos art. 254 E.T. en proporción a su participación"
+      },
+      "casilla_123": {
+        "nombre": "Donaciones",
+        "limite": "30% del impuesto a cargo",
+        "tipos": [
+          "Inversiones I+D+i (30% de la inversión)",
+          "Donaciones becas educación (ICETEX, universidades)",
+          "Remuneración personal con doctorado",
+          "Donaciones entidades sin ánimo lucro régimen especial (25%)",
+          "Becas por impuestos (Coldeportes)"
+        ]
+      },
+      "casilla_124": {
+        "nombre": "Dividendos, participaciones y otros",
+        "descuento_dividendos": "Según tabla artículo 254-1 E.T.",
+        "IVA_activos_fijos": "IVA pagado por adquisición/construcción/importación activos fijos reales productivos",
+        "nota_ICA": "A partir del año gravable 2023 el ICA ya no es descuento tributario"
+      },
+      "casilla_125": {
+        "nombre": "Total descuentos tributarios",
+        "formula": "Casilla 122 + 123 + 124"
+      }
+    },
+    "liquidacion_final": {
+      "casilla_126": {
+        "nombre": "Impuesto neto de renta",
+        "formula": "Casilla 121 - Casilla 125"
+      },
+      "casilla_127": {
+        "nombre": "Impuesto de ganancias ocasionales",
+        "loterias_rifas": {
+          "tarifa": "20%"
+        },
+        "demas_ganancias": {
+          "tarifa": "15%"
+        }
+      },
+      "casilla_128": {
+        "nombre": "Descuento impuestos pagados exterior por ganancias ocasionales"
+      },
+      "casilla_129": {
+        "nombre": "Total impuesto a cargo",
+        "formula": "Casilla 126 + 127 - 128"
+      },
+      "casilla_130": {
+        "nombre": "Anticipo renta liquidado año anterior",
+        "fuente": "De la declaración del año anterior"
+      },
+      "casilla_131": {
+        "nombre": "Saldo a favor año anterior sin solicitud devolución/compensación"
+      },
+      "casilla_132": {
+        "nombre": "Retenciones año gravable a declarar"
+      },
+      "casilla_133": {
+        "nombre": "Anticipo renta para año siguiente",
+        "primer_año": "25% impuesto neto",
+        "segundo_año": "50% impuesto neto o promedio 2 años",
+        "tercer_año_y_siguientes": "75% impuesto neto o promedio 2 años",
+        "formula": "Porcentaje aplicable - retenciones casilla 132"
+      },
+      "casilla_134": {
+        "nombre": "Saldo a pagar por impuesto",
+        "formula": "Casilla 129 + 133 - 130 - 131 - 132"
+      },
+      "casilla_135": {
+        "nombre": "Sanciones",
+        "minima": "10 UVT"
+      },
+      "casilla_136": {
+        "nombre": "Total saldo a pagar",
+        "formula": "Casilla 129 + 133 + 135 - 130 - 131 - 132"
+      },
+      "casilla_137": {
+        "nombre": "Total saldo a favor",
+        "formula": "Casilla 130 + 131 + 132 - 129 - 133 - 135"
+      }
+    },
+    "otras_casillas": {
+      "casilla_138": {
+        "nombre": "Número de dependientes económicos"
+      },
+      "casilla_139": {
+        "nombre": "Adición por dependientes a casilla 92",
+        "monto_UVT": 72,
+        "maximo": 4,
+        "aplicacion": "Solo para rentas de trabajo, excepto cuando hay relación laboral y no laboral simultáneas"
+      },
+      "casilla_140": {
+        "nombre": "Ud. superó tope indicativo art. 336-1 E.T.",
+        "tope_indicativo": "60%",
+        "aplicable": "Rentas de trabajo no laboral con costos y gastos",
+        "accion": "Marcar X si se supera el 60%"
+      },
+      "casilla_141": {
+        "nombre": "Aporte voluntario",
+        "destino": "Programas sociales, reducción pobreza extrema, atención discapacidad, adulto mayor",
+        "caracteristicas": [
+          "No genera beneficio tributario",
+          "No genera saldo a favor",
+          "No aplica para sanciones ni intereses",
+          "No se puede solicitar en devolución"
+        ]
+      }
+    }
   },
   "beneficio_auditoria": {
-    "años_aplicables": ["2023", "2024", "2025", "2026"],
-    "incremento_35_porciento": {
-      "firmeza": "6 meses"
-    },
-    "incremento_25_porciento": {
-      "firmeza": "12 meses"
-    },
-    "requisitos": [
-      "Presentación oportuna",
-      "Incremento mínimo del impuesto neto",
-      "Pago total en plazos establecidos"
+    "titulo": "BENEFICIO DE LA AUDITORÍA",
+    "años_aplicables": [
+      "2023",
+      "2024",
+      "2025",
+      "2026"
     ],
-    "exclusiones": [
-      "Beneficiarios de incentivos por ubicación geográfica",
-      "Impuesto neto inferior a 71 UVT"
-    ]
-  },
-  "entidades_controladas_exterior": {
-    "sigla": "ECE",
-    "participacion_minima": "10%",
-    "rentas_pasivas": {
-      "casillas": ["62", "79"],
-      "tratamiento": "Incluir según participación en ECE"
+    "opcion_1_incremento_35_porciento": {
+      "incremento_minimo": "35%",
+      "base": "En relación con el impuesto neto de renta del año inmediatamente anterior",
+      "firmeza": "6 meses",
+      "descripcion": "La liquidación privada quedará en firme si dentro de los seis (6) meses siguientes a la fecha de su presentación no se hubiere notificado emplazamiento para corregir o requerimiento especial o emplazamiento especial o liquidación provisional",
+      "requisitos": [
+        "Declaración debidamente presentada en forma oportuna",
+        "Pago total realizado en los plazos que fije el Gobierno nacional"
+      ]
+    },
+    "opcion_2_incremento_25_porciento": {
+      "incremento_minimo": "25%",
+      "base": "En relación con el impuesto neto de renta del año inmediatamente anterior",
+      "firmeza": "12 meses",
+      "descripcion": "La declaración de renta quedará en firme si dentro de los doce (12) meses siguientes a la fecha de su presentación no se hubiere notificado emplazamiento para corregir o requerimiento especial o emplazamiento especial o liquidación provisional",
+      "requisitos": [
+        "Declaración debidamente presentada en forma oportuna",
+        "Pago total realizado en los plazos que fije el Gobierno nacional"
+      ]
+    },
+    "exclusiones": {
+      "no_aplica_a": [
+        "Contribuyentes que gocen de beneficios tributarios en razón a su ubicación en una zona geográfica determinada"
+      ]
+    },
+    "perdidas_fiscales": {
+      "facultad_DIAN": "Cuando la declaración objeto de beneficio de auditoría arroje una pérdida fiscal, la Administración Tributaria podrá ejercer las facultades de fiscalización para determinar la procedencia o improcedencia de la misma y, por ende, su compensación en años posteriores",
+      "no_obstante": "Esta facultad se tendrá no obstante haya transcurrido el período de que trata el artículo 689-3 del E.T."
+    },
+    "contribuyentes_sin_declaracion_anterior": {
+      "descripcion": "En el caso de los contribuyentes que en los años anteriores al periodo en que pretende acogerse al beneficio de auditoría, no hubieren presentado declaración de renta y complementario",
+      "condicion": "Y cumplan con dicha obligación dentro de los plazos que señale el Gobierno nacional para presentar las declaraciones correspondientes a los años gravables 2023, 2024, 2025 y 2026",
+      "aplicacion": "Les serán aplicables los términos de firmeza de la liquidación prevista en el artículo 689-3 del E.T.",
+      "requisito": "Deberán incrementar el impuesto neto de renta a cargo por dichos períodos en los porcentajes de que trata este artículo"
+    },
+    "retenciones_inexistentes": {
+      "regla": "Cuando se demuestre que las retenciones en la fuente declaradas son inexistentes, no procederá el beneficio de auditoría"
+    },
+    "correcciones": {
+      "descripcion": "Las declaraciones de corrección que se presenten antes del término de firmeza de que trata el artículo 689-3 del E.T. no afectarán la validez del beneficio de auditoría",
+      "condicion": "Siempre y cuando en la declaración inicial el contribuyente cumpla con los requisitos de presentación oportuna, incremento del impuesto neto sobre la renta, pago total, y en las correcciones dichos requisitos se mantengan"
+    },
+    "impuesto_minimo": {
+      "monto_UVT": 71,
+      "descripcion": "Cuando el impuesto neto sobre la renta de la declaración correspondiente al año gravable frente al cual debe cumplirse el requisito del incremento sea inferior a 71 UVT, no procederá la aplicación del beneficio de auditoría"
+    },
+    "saldos_a_favor": {
+      "descripcion": "Cuando se trate de declaraciones que registren saldo a favor, el término para solicitar la devolución y/o compensación será el previsto en el artículo 689-3 del E.T. para la firmeza de la declaración"
+    },
+    "declaraciones_IVA_retencion": {
+      "descripcion": "Los términos de firmeza previstos en el artículo 689-3 del E.T. no serán aplicables en relación con las declaraciones privadas del impuesto sobre las ventas y de retención en la fuente por los períodos comprendidos en los años gravables 2023, 2024, 2025 y 2026",
+      "regimen_aplicable": "Las cuales se regirán en esta materia por lo previsto en los artículos 705 y 714 del E.T."
     }
   },
-  "convenios_internacionales": {
-    "fundamentacion": "Modelo OCDE y ONU",
-    "objetivo": "Evitar doble tributación y prevenir evasión fiscal",
-    "CAN_decision_578": {
-      "aplicacion": "Servicios en países miembros CAN",
-      "tratamiento": "Gravable solo en país donde se presta servicio"
+  "ejemplo_calculo_renta_presuntiva": {
+    "titulo": "EJEMPLO PROCEDIMIENTO PARA LA APLICACIÓN DE LAS RENTAS EXENTAS EN LA RENTA PRESUNTIVA",
+    "datos_ejemplo": {
+      "rentas_trabajo": {
+        "ingresos": 100000000,
+        "ingresos_no_constitutivos": 4800000,
+        "renta_liquida": 95200000,
+        "rentas_exentas": {
+          "AFC_FVP": 20000000,
+          "25_porciento_art_206": 12550000,
+          "total": 47550000
+        },
+        "deducciones": {
+          "dependientes": 10000000,
+          "total": 10000000
+        },
+        "total_rentas_exentas_deducciones": 57550000,
+        "participacion_porcentual": "82.63%"
+      },
+      "rentas_trabajo_no_laboral": {
+        "ingresos": 50000000,
+        "ingresos_no_constitutivos": 6000000,
+        "costos_gastos": 41000000,
+        "renta_liquida": 6000000,
+        "rentas_exentas": {
+          "total": 5000000
+        },
+        "deducciones": {
+          "total": 6000000
+        },
+        "total_rentas_exentas_deducciones": 11000000,
+        "participacion_porcentual": "54.55%"
+      },
+      "rentas_capital": {
+        "ingresos": 290000000,
+        "ingresos_no_constitutivos": 12000000,
+        "costos_gastos": 150000000,
+        "renta_liquida": 125600000,
+        "rentas_exentas": {
+          "AFC_FVP": 20000000,
+          "otras": 10000000,
+          "total": 33282000
+        },
+        "deducciones": {
+          "total": 2500000
+        },
+        "total_rentas_exentas_deducciones": 87000000,
+        "participacion_porcentual": "97.21%"
+      },
+      "rentas_no_laborales": {
+        "ingresos": 273500000,
+        "devoluciones": 7000000,
+        "ingresos_no_constitutivos": 125600000,
+        "costos_gastos": 17400000,
+        "renta_liquida": 87000000,
+        "rentas_exentas": {
+          "total": 75000000
+        },
+        "deducciones": {
+          "total": 0
+        },
+        "total_rentas_exentas_deducciones": 75000000,
+        "participacion_porcentual": "100.00%"
+      }
+    },
+    "paso_1_calculo_participacion": {
+      "descripcion": "Cálculo porcentaje de participación del TOTAL RENTAS EXENTAS (A) en el TOTAL RENTAS EXENTAS Y DEDUCCIONES IMPUTABLES (B)",
+      "formula": "(A) / (B) = %",
+      "resultados": {
+        "rentas_trabajo": {
+          "total_rentas_exentas": 47550000,
+          "total_rentas_exentas_deducciones": 57550000,
+          "porcentaje": "82.63%"
+        },
+        "rentas_trabajo_no_laboral": {
+          "total_rentas_exentas": 5000000,
+          "total_rentas_exentas_deducciones": 11000000,
+          "porcentaje": "54.55%"
+        },
+        "rentas_capital": {
+          "total_rentas_exentas": 33282000,
+          "total_rentas_exentas_deducciones": 87000000,
+          "porcentaje": "97.21%"
+        },
+        "rentas_no_laborales": {
+          "total_rentas_exentas": 75000000,
+          "total_rentas_exentas_deducciones": 75000000,
+          "porcentaje": "100.00%"
+        }
+      }
+    },
+    "paso_2_calculo_renta_presuntiva": {
+      "patrimonio_liquido_depurado": 11570000000,
+      "porcentaje_renta_presuntiva": "0%",
+      "renta_presuntiva_depurada": 0,
+      "renta_gravable_activos_exceptuados": 505638000,
+      "valor_renta_presuntiva_final": 505638000
+    },
+    "paso_3_aplicacion_porcentajes": {
+      "descripcion": "Aplicación de los porcentajes obtenidos en el PASO 1 en el TOTAL RENTAS EXENTAS Y DEDUCCIONES IMPUTABLES (Limitadas) (C) de cada renta",
+      "rentas_exentas_proporcionales_admisibles": {
+        "rentas_trabajo": {
+          "porcentaje": "82.63%",
+          "valor": 47554000
+        },
+        "rentas_trabajo_no_laboral": {
+          "porcentaje": "54.55%",
+          "valor": 6001000
+        },
+        "rentas_capital": {
+          "porcentaje": "97.21%",
+          "valor": 32353000
+        },
+        "rentas_no_laborales": {
+          "porcentaje": "100.00%",
+          "valor": 0
+        }
+      },
+      "total_rentas_exentas_disminuir_presuntiva": 85908000
+    },
+    "paso_4_comparacion": {
+      "valor_renta_presuntiva": 505638000,
+      "menos_rentas_exentas": 85908000,
+      "renta_liquida_presuntiva": 419730000,
+      "renta_liquida_gravable_cedula_general": 432368000,
+      "mayor_valor": "Renta líquida gravable cédula general",
+      "valor_a_usar": 432368000,
+      "accion": "Si la Renta líquida gravable cédula general es mayor a la renta presuntiva, el impuesto se calculará llevando el resultado de sumar la Renta líquida gravable cédula general, de pensiones, y de dividendos y participaciones, a la tabla establecida en el artículo 241 E.T."
+    },
+    "detalle_rentas_liquidacion": {
+      "rentas_trabajo": {
+        "renta_liquida": 95200000,
+        "compensacion_perdidas_2018": 100000,
+        "compensacion_exceso_presuntiva": 1000000,
+        "renta_liquida_gravable": 101832000
+      },
+      "rentas_capital": {
+        "renta_liquida_ordinaria_ejercicio": 125600000,
+        "compensacion_perdidas": 240218000
+      },
+      "rentas_no_laborales": {
+        "renta_liquida_ordinaria_ejercicio": 87000000,
+        "compensacion_perdidas": 30000000
+      },
+      "renta_liquida_ordinaria_cedula_general_total": 433468000,
+      "rentas_exentas_deducciones_limitadas_total": 92,
+      "renta_liquida_ordinaria_cedula_general": 432368000
     }
   },
-  "dependientes_economicos": {
-    "categorias": [
-      "Hijos hasta 18 años",
-      "Hijos 18-23 años en educación superior",
-      "Hijos mayores 18 años con dependencia física/psicológica",
-      "Cónyuge o compañero permanente con ingresos < 260 UVT",
-      "Padres y hermanos con ingresos < 260 UVT o dependencia"
-    ],
-    "casilla": "138"
+  "notas_adicionales": {
+    "UVT_2023": {
+      "valor": "Consultar valor UVT vigente para el año gravable",
+      "uso": "Todas las referencias a UVT en este instructivo deben multiplicarse por el valor de la UVT del año correspondiente"
+    },
+    "formatos_relacionados": {
+      "formato_220": "Certificado de ingresos y retenciones por rentas de trabajo y de pensiones",
+      "formato_490": "Recibo Oficial de Pago Impuestos Nacionales",
+      "anexo_210": "Reporte de conciliación fiscal",
+      "modelo_2517": "Formato Modelo Reporte Conciliación fiscal"
+    },
+    "articulos_clave": {
+      "art_206_ET": "Rentas exentas",
+      "art_336_ET": "Deducciones imputables rentas de trabajo",
+      "art_241_ET": "Tarifas impuesto personas naturales",
+      "art_49_ET": "Distribución de utilidades y dividendos",
+      "art_119_ET": "Deducción intereses vivienda",
+      "art_689_3_ET": "Firmeza de las declaraciones"
+    },
+    "actualizaciones": {
+      "clasificacion_CIIU": "Resoluciones DIAN 000114/2020, 001232/2022, 000086/2023",
+      "ley_2277_2022": "Deducción transitoria San Andrés",
+      "decreto_1435_2020": "Modificación compensación pérdidas",
+      "ley_2010_2019": "Deducción primer empleo"
+    }
   },
-  "sanciones": {
-    "minima": "10 UVT",
-    "aplicable": "Presentación extemporánea o corrección"
-  },
-  "aporte_voluntario": {
-    "casilla": "141",
-    "destino": [
-      "Programas sociales reducción pobreza extrema",
-      "Atención personas con discapacidad",
-      "Mejoramiento calidad vida adulto mayor"
+  "metadata_documento": {
+    "version_completa": true,
+    "secciones_incluidas": [
+      "Información preliminar",
+      "Datos del declarante",
+      "Patrimonio",
+      "Cédula General (Rentas de trabajo, trabajo no laboral, capital, no laborales)",
+      "Cédula de Pensiones",
+      "Cédula de Dividendos y Participaciones",
+      "Ganancias Ocasionales",
+      "Liquidación Privada",
+      "Descuentos Tributarios",
+      "Beneficio de Auditoría",
+      "Ejemplo de cálculo renta presuntiva"
     ],
-    "caracteristicas": [
-      "No genera beneficio tributario",
-      "No genera saldo a favor",
-      "No aplica para sanciones ni intereses"
-    ]
+    "total_casillas_documentadas": 141,
+    "paginas_fuente": 19,
+    "nivel_detalle": "Completo - incluye fórmulas, bases legales, límites, requisitos y conciliaciones fiscales"
   }
 }

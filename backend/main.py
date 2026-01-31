@@ -7,6 +7,7 @@ import os
 import shutil
 import uuid
 import asyncio
+import base64
 from pathlib import Path
 from dotenv import load_dotenv
 import pdf_utils
@@ -36,6 +37,18 @@ app.add_middleware(
 
 # Mount temp directory to serve images
 app.mount("/temp", StaticFiles(directory=str(temp_dir)), name="temp")
+
+@app.on_event("startup")
+async def startup_event():
+    # Clean up old temp files on startup to ensure privacy from previous runs
+    if temp_dir.exists():
+        for item in temp_dir.iterdir():
+            if item.is_dir():
+                try:
+                    shutil.rmtree(item)
+                    print(f"Cleaned up old temp directory: {item}")
+                except Exception as e:
+                    print(f"Error cleaning up {item}: {e}")
 
 @app.get("/")
 async def root():
@@ -68,6 +81,19 @@ async def upload_document(file: UploadFile = File(...)):
     # Wait for all pages to be processed concurrently
     page_results = await asyncio.gather(*page_tasks)
     
+    # Encode images to Base64 and delete them
+    b64_images = []
+    for path in image_paths:
+        with open(path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+            b64_images.append(f"data:image/png;base64,{encoded_string}")
+            
+    # CRITICAL: Clean up disk immediately after processing/encoding
+    try:
+        shutil.rmtree(temp_dir_path)
+    except Exception as e:
+        print(f"Cleanup error for {doc_id}: {e}")
+    
     # Flatten results and add metadata
     all_chips = []
     for chips in page_results:
@@ -81,7 +107,7 @@ async def upload_document(file: UploadFile = File(...)):
         "filename": file.filename,
         "status": "processed",
         "chips": all_chips,
-        "image_urls": [f"{API_BASE_URL}/temp/{doc_id}/pages/page_{i+1}.png" for i in range(len(image_paths))]
+        "image_urls": b64_images # Now contains Base64 Data URLs instead of server paths
     }
 
 if __name__ == "__main__":

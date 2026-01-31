@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { CALCULATED_FIELD_IDS } from '../utils/formulas';
 
 export interface BucketSource {
     docName: string;
@@ -137,30 +138,34 @@ const ExcelWorkbench: React.FC<ExcelWorkbenchProps> = ({ activeTab, buckets, isD
                         const isMainIncome = activeTab === 'Laboral' && bucket.id === '32';
                         const isSuggested = suggestedBuckets.includes(bucket.id);
                         const hasSuccessAnimation = successAnimation === bucket.id;
-                        
+                        const isCalculated = CALCULATED_FIELD_IDS.includes(bucket.id);
+
                         return (
                             <React.Fragment key={bucket.id}>
                                 <tr
                                     className="bucket-row"
                                     data-bucket-id={bucket.id}
                                     onClick={() => setSelectedBucket(selectedBucket === bucket.id ? null : bucket.id)}
-                                    onMouseEnter={() => isDragging && setHoveredBucket(bucket.id)}
+                                    onMouseEnter={() => isDragging && !isCalculated && setHoveredBucket(bucket.id)}
                                     onMouseLeave={() => isDragging && setHoveredBucket(null)}
                                     style={{
                                         borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
                                         cursor: 'pointer',
                                         transition: 'all var(--transition-base)',
+                                        opacity: isDragging && isCalculated ? 0.5 : 1,
                                         background: hasSuccessAnimation
                                             ? 'rgba(0, 255, 136, 0.3)'
-                                            : hoveredBucket === bucket.id && isDragging
-                                            ? 'rgba(0, 255, 136, 0.15)'
-                                            : isSuggested && !isDragging
-                                            ? 'rgba(255, 200, 0, 0.1)'
-                                            : selectedBucket === bucket.id
-                                            ? 'rgba(0, 136, 255, 0.08)'
-                                            : isMainIncome
-                                            ? 'rgba(0, 136, 255, 0.03)'
-                                            : getBucketColor?.(activeTab) || 'transparent',
+                                            : hoveredBucket === bucket.id && isDragging && !isCalculated
+                                                ? 'rgba(0, 255, 136, 0.15)'
+                                                : isSuggested && !isDragging
+                                                    ? 'rgba(255, 200, 0, 0.1)'
+                                                    : selectedBucket === bucket.id
+                                                        ? 'rgba(0, 136, 255, 0.08)'
+                                                        : isMainIncome
+                                                            ? 'rgba(0, 136, 255, 0.03)'
+                                                            : isCalculated
+                                                                ? 'rgba(0, 0, 0, 0.2)'
+                                                                : getBucketColor?.(activeTab) || 'transparent',
                                         borderLeft: hoveredBucket === bucket.id && isDragging
                                             ? '3px solid var(--accent-green)'
                                             : isMainIncome ? '3px solid var(--primary-blue-light)' : '3px solid transparent',
@@ -171,29 +176,36 @@ const ExcelWorkbench: React.FC<ExcelWorkbenchProps> = ({ activeTab, buckets, isD
                                 >
                                     <td style={{
                                         padding: '14px 10px',
-                                        color: 'var(--primary-blue-light)',
+                                        color: isCalculated ? 'var(--text-secondary)' : 'var(--primary-blue-light)',
                                         fontWeight: 'bold',
                                         fontSize: isMainIncome ? '14px' : '13px'
-                                    }}>{bucket.id}</td>
+                                    }}>
+                                        {bucket.id}
+                                        {isCalculated && <span style={{ fontSize: '9px', marginLeft: '4px', opacity: 0.7 }}>🔒</span>}
+                                    </td>
                                     <td style={{
                                         padding: '14px 10px',
                                         fontSize: '13px',
-                                        color: 'var(--text-primary)',
-                                        fontWeight: isMainIncome ? 600 : 'normal'
+                                        color: isCalculated ? 'var(--text-secondary)' : 'var(--text-primary)',
+                                        fontWeight: isMainIncome ? 600 : 'normal',
+                                        fontStyle: isCalculated ? 'italic' : 'normal'
                                     }}>{bucket.name}</td>
-                                    <td 
+                                    <td
                                         style={{
                                             padding: '14px 10px',
                                             textAlign: 'right',
                                             fontWeight: 'bold',
                                             fontSize: isMainIncome ? '15px' : '14px',
-                                            fontFamily: 'monospace'
+                                            fontFamily: 'monospace',
+                                            color: isCalculated ? 'var(--text-muted)' : 'inherit'
                                         }}
                                         onDoubleClick={(e) => {
                                             e.stopPropagation();
+                                            if (isCalculated) return;
                                             setEditingBucket(bucket.id);
                                             setEditValue('');
                                         }}
+                                        title={isCalculated ? 'Campo calculado automáticamente' : 'Doble clic para editar'}
                                     >
                                         {editingBucket === bucket.id ? (
                                             <input
