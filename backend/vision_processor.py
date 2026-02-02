@@ -112,7 +112,6 @@ async def convert_to_markdown(image_path: str, page_num: int) -> dict:
             - confidence: Classification confidence (only for page 1)
     """
     base64_image = pdf_utils.encode_image(image_path)
-    # No-op for debug prints
     
     prompt = f"""
 Convert this Colombian tax document image to structured markdown.
@@ -232,7 +231,6 @@ async def extract_chips_from_page(image_path: str, page_num: int, pdf_path: str 
             - confidence: Classification confidence (only for page 1)
     """
     base64_image = pdf_utils.encode_image(image_path)
-    # No-op for debug prints
     
     # Build prompt for chip extraction
     prompt = build_chip_prompt()

@@ -65,11 +65,12 @@ class ExtractoBancarioExtraido(BaseModel):
     
     # Balances and income
     saldo_final: Optional[float] = Field(None, description="Saldo final al cierre del periodo")
+    total_abonos: Optional[float] = Field(None, description="Total de todos los abonos, depósitos y créditos recibidos en la cuenta durante el periodo (puede aparecer como 'Total Abonos', 'Total Créditos' o 'Total Depósitos')")
     total_intereses: Optional[float] = Field(None, description="Total de intereses o rendimientos ganados")
     
     # Charges and taxes
     total_gmf: Optional[float] = Field(None, description="Total GMF (Gravamen Movimientos Financieros 4x1000)")
-    total_comisiones: Optional[float] = Field(None, description="Total de comisiones y cargos bancarios")
+    total_comisiones: Optional[float] = Field(None, description="Total de cargos, comisiones y tarifas cobradas por el banco durante el periodo (puede aparecer como 'Total Cargos', 'Total Comisiones' o 'Total Tarifas')")
     retencion_fuente: Optional[float] = Field(None, description="Retención en la fuente sobre intereses")
 
 
@@ -304,11 +305,25 @@ class FacturaExtraida(BaseModel):
 class DocumentoGenericoExtraido(BaseModel):
     """
     Generic document for unknown types.
+    Extracts common financial fields that may be relevant for tax purposes.
     """
     
-    tipo_documento_detectado: Optional[str] = Field(None, description="Tipo de documento detectado")
-    campos_extraidos: Optional[dict] = Field(None, description="Campos extraídos {nombre: valor}")
-    notas: Optional[str] = Field(None, description="Notas sobre el documento")
+    # Identification
+    tipo_documento_detectado: Optional[str] = Field(None, description="Tipo de documento detectado o identificado")
+    fecha_documento: Optional[str] = Field(None, description="Fecha del documento o periodo fiscal")
+    entidad_emisora: Optional[str] = Field(None, description="Nombre de la entidad que emite el documento")
+    
+    # Common monetary fields
+    valor_total: Optional[float] = Field(None, description="Valor total, monto principal o suma total del documento")
+    valor_pagado: Optional[float] = Field(None, description="Valor pagado, abonado o desembolsado")
+    saldo_pendiente: Optional[float] = Field(None, description="Saldo pendiente, deuda o monto por pagar")
+    intereses: Optional[float] = Field(None, description="Intereses, rendimientos financieros o cargos por intereses")
+    impuestos: Optional[float] = Field(None, description="Impuestos, retenciones o tributos aplicados")
+    descuentos: Optional[float] = Field(None, description="Descuentos, deducciones o rebajas aplicadas")
+    comisiones: Optional[float] = Field(None, description="Comisiones, tarifas o cargos administrativos")
+    
+    # Notes
+    notas: Optional[str] = Field(None, description="Notas adicionales sobre campos relevantes para declaración de renta")
 
 
 # ============================================================================

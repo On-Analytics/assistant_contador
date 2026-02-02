@@ -150,17 +150,19 @@ async def upload_document_with_relevance(file: UploadFile = File(...)):
         document_type = markdown_results[0].get("document_type")
         confidence = markdown_results[0].get("confidence")
         
-        # STAGE 2: Text model extracts from markdown
-        extraction_tasks = [
-            text_extractor.extract_from_markdown(
-                md_result["markdown"],
-                document_type,
-                page_num=i + 1,
-                model="gpt-4o-mini"
-            )
-            for i, md_result in enumerate(markdown_results)
-        ]
-        chips_per_page = await asyncio.gather(*extraction_tasks)
+        # Combine all markdown pages into one document
+        full_markdown = ""
+        for i, md_result in enumerate(markdown_results):
+            markdown_content = md_result.get("markdown", "")
+            full_markdown += f"\n\n--- PAGE {i+1} ---\n\n" + markdown_content
+        
+        # STAGE 2: Text model extracts from ENTIRE document (not per page)
+        all_chips = await text_extractor.extract_from_markdown(
+            full_markdown,
+            document_type,
+            page_num=1,  # Not used anymore, but kept for compatibility
+            model="gpt-4o-mini"
+        )
         
         # Encode images to Base64
         b64_images = []
@@ -175,22 +177,10 @@ async def upload_document_with_relevance(file: UploadFile = File(...)):
         except Exception:
             pass
         
-        # Flatten chips and add metadata
-        all_chips = []
-        full_markdown = ""
-        for i, md_result in enumerate(markdown_results):
-            markdown_content = md_result.get("markdown", "")
-            full_markdown += f"\n\n--- PAGE {i+1} ---\n\n" + markdown_content
-            
-            chips = chips_per_page[i]
-            print(f"DEBUG: Page {i+1} chips before metadata: {chips}")
-            for chip in chips:
-                chip["id"] = str(uuid.uuid4())
-                chip["doc_id"] = doc_id
-            all_chips.extend(chips)
-        
-        print(f"DEBUG: Total chips being returned: {len(all_chips)}")
-        print(f"DEBUG: All chips: {all_chips}")
+        # Add metadata to chips
+        for chip in all_chips:
+            chip["id"] = str(uuid.uuid4())
+            chip["doc_id"] = doc_id
         
         return {
             "doc_id": doc_id,
