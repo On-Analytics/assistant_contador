@@ -7,6 +7,13 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Rules
+**1. DO NOT PERFORM CALCULATIONS**: Only extract values that are explicitly written in the document summary parts. Do not sum, subtract, or calculate totals yourself.
+**2. NO HALLUCINATIONS**: If a field is not explicitly shown with a value, do not report it as 0. Only report what is actually written.
+**3. USE MARKDOWN CONTEXT**: Use the markdown context to identify values.
+**4. Default to NOT relevant.**  It's better to provide a clean list of certifiable totals than a cluttered list of transaction details.
+**5. The Colombian tax authority** (DIAN) needs consolidated figures for Patrimonio, Rentas, and Deducciones.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).

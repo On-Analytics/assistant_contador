@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PDFCanvas from './components/PDFCanvas'
 import ExtractionSidebar from './components/ExtractionSidebar'
 import type { PanInfo } from 'framer-motion'
@@ -222,6 +222,21 @@ function App() {
     if (chip.value > 1000000) return ['32', '45'] // Income or pension
     return []
   }
+
+  // Track number of documents to detect when new ones are added
+  const prevDocumentCountRef = useRef(documents.length)
+
+  // Set active document when new documents are uploaded
+  useEffect(() => {
+    // If documents array grew (new document uploaded)
+    if (documents.length > prevDocumentCountRef.current && documents.length > 0) {
+      // Set active to the latest document
+      const latestDoc = documents[documents.length - 1]
+      setActiveDocumentId(latestDoc.id)
+    }
+    // Update the ref for next render
+    prevDocumentCountRef.current = documents.length
+  }, [documents])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -551,7 +566,8 @@ function App() {
         const formData = new FormData()
         formData.append('file', file)
 
-        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/upload`, formData, {
+        // Use the new endpoint with relevance classification
+        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/upload-with-relevance`, formData, {
           onUploadProgress: (progressEvent) => {
             if (progressEvent.total) {
               const fileProgress = (progressEvent.loaded / progressEvent.total) * 100
@@ -564,6 +580,8 @@ function App() {
         completedFiles++
         setUploadProgress(Math.round((completedFiles / totalFiles) * 100))
 
+        // Progress logging removed
+
         return {
           id: `${Date.now()}-${Math.random()}`,
           name: file.name,
@@ -575,11 +593,10 @@ function App() {
 
       const newDocuments = await Promise.all(uploadPromises)
       setDocuments(prev => [...prev, ...newDocuments])
-      if (newDocuments.length > 0) {
-        setActiveDocumentId(newDocuments[0].id)
-      }
+      // Note: Active document ID is now set by useEffect when documents array changes
     } catch (error) {
       console.error("Upload failed", error)
+      alert("Error al procesar el documento. Por favor, revisa la consola del servidor.")
     } finally {
       setIsUploading(false)
       setUploadProgress(0)

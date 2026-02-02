@@ -6,12 +6,9 @@ export interface Chip {
     id: string;
     value: number;
     label: string;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
     page: number;
-    doc_id: string;
+    doc_id?: string;
+    field_name?: string;  // Schema field name from backend
 }
 
 interface PDFCanvasProps {

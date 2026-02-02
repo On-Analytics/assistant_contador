@@ -124,6 +124,5 @@ def refine_chip_coordinates(pdf_path: str, page_num: int, chips: list):
                     
         doc.close()
         return chips
-    except Exception as e:
-        print(f"Error refining coordinates: {e}")
+    except Exception:
         return chips

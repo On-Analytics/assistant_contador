@@ -46,9 +46,8 @@ async def startup_event():
             if item.is_dir():
                 try:
                     shutil.rmtree(item)
-                    print(f"Cleaned up old temp directory: {item}")
-                except Exception as e:
-                    print(f"Error cleaning up {item}: {e}")
+                except Exception:
+                    pass
 
 @app.get("/")
 async def root():
@@ -60,6 +59,7 @@ async def health_check():
 
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):
+    """Original upload endpoint - extracts numeric chips only."""
     doc_id = str(uuid.uuid4())
     temp_dir_path = temp_dir / doc_id
     temp_dir_path.mkdir(parents=True, exist_ok=True)
@@ -96,7 +96,8 @@ async def upload_document(file: UploadFile = File(...)):
     
     # Flatten results and add metadata
     all_chips = []
-    for chips in page_results:
+    for page_result in page_results:
+        chips = page_result.get("chips", [])  # Extract chips from dict
         for chip in chips:
             chip["id"] = str(uuid.uuid4())
             chip["doc_id"] = doc_id
@@ -110,5 +111,105 @@ async def upload_document(file: UploadFile = File(...)):
         "image_urls": b64_images # Now contains Base64 Data URLs instead of server paths
     }
 
+
+@app.post("/upload-with-relevance")
+async def upload_document_with_relevance(file: UploadFile = File(...)):
+    """
+    Upload endpoint with field relevance classification.
+    
+    Two-stage flow:
+    1. Vision model converts images to structured markdown
+    2. Text model extracts and classifies fields from markdown
+    """
+    import text_extractor
+    
+    doc_id = str(uuid.uuid4())
+    temp_dir_path = temp_dir / doc_id
+    temp_dir_path.mkdir(parents=True, exist_ok=True)
+    
+    pdf_path = temp_dir_path / file.filename
+    with open(pdf_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+        
+    # Convert PDF to images
+    pages_dir = temp_dir_path / "pages"
+    image_paths = await pdf_utils.pdf_to_images_async(str(pdf_path), str(pages_dir))
+    
+    try:
+        # STAGE 1: Vision model converts to markdown
+        markdown_tasks = [
+            vision_processor.convert_to_markdown(path, i + 1)
+            for i, path in enumerate(image_paths)
+        ]
+        markdown_results = await asyncio.gather(*markdown_tasks)
+        
+        if not markdown_results:
+            return {"error": "No pages were processed"}
+
+        # Get document type from first page
+        document_type = markdown_results[0].get("document_type")
+        confidence = markdown_results[0].get("confidence")
+        
+        # STAGE 2: Text model extracts from markdown
+        extraction_tasks = [
+            text_extractor.extract_from_markdown(
+                md_result["markdown"],
+                document_type,
+                page_num=i + 1,
+                model="gpt-4o-mini"
+            )
+            for i, md_result in enumerate(markdown_results)
+        ]
+        chips_per_page = await asyncio.gather(*extraction_tasks)
+        
+        # Encode images to Base64
+        b64_images = []
+        for path in image_paths:
+            with open(path, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+                b64_images.append(f"data:image/png;base64,{encoded_string}")
+        
+        # Clean up disk
+        try:
+            shutil.rmtree(temp_dir_path)
+        except Exception:
+            pass
+        
+        # Flatten chips and add metadata
+        all_chips = []
+        full_markdown = ""
+        for i, md_result in enumerate(markdown_results):
+            markdown_content = md_result.get("markdown", "")
+            full_markdown += f"\n\n--- PAGE {i+1} ---\n\n" + markdown_content
+            
+            chips = chips_per_page[i]
+            print(f"DEBUG: Page {i+1} chips before metadata: {chips}")
+            for chip in chips:
+                chip["id"] = str(uuid.uuid4())
+                chip["doc_id"] = doc_id
+            all_chips.extend(chips)
+        
+        print(f"DEBUG: Total chips being returned: {len(all_chips)}")
+        print(f"DEBUG: All chips: {all_chips}")
+        
+        return {
+            "doc_id": doc_id,
+            "filename": file.filename,
+            "status": "processed",
+            "document_type": document_type,
+            "classification_confidence": confidence,
+            "chips": all_chips,
+            "image_urls": b64_images,
+            "total_fields": len(all_chips),
+            "markdown": full_markdown,
+            "markdown_preview": full_markdown[:500]
+        }
+    except Exception as e:
+        print(f"Global Endpoint Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e), "status": "failed"}
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+

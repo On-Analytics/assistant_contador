@@ -14,6 +14,13 @@ This application provides automated processing and analysis of Colombian tax for
 - **Form Validation**: Automated validation of tax form data
 - **Modern UI**: React-based frontend with TypeScript
 
+## Rules
+**1. DO NOT PERFORM CALCULATIONS**: Only extract values that are explicitly written in the document summary parts. Do not sum, subtract, or calculate totals yourself.
+**2. NO HALLUCINATIONS**: If a field is not explicitly shown with a value, do not report it as 0. Only report what is actually written.
+**3. USE MARKDOWN CONTEXT**: Use the markdown context to identify values.
+**4. Default to NOT relevant.**  It's better to provide a clean list of certifiable totals than a cluttered list of transaction details.
+**5. The Colombian tax authority** (DIAN) needs consolidated figures for Patrimonio, Rentas, and Deducciones.
+
 ## Project Structure
 
 ```

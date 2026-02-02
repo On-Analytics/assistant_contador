@@ -60,7 +60,7 @@ const ExtractionSidebar: React.FC<ExtractionSidebarProps> = ({ chips, onDragStar
                 paddingRight: '4px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '8px',
+                gap: '12px',
                 flex: 1
             }}>
                 {nonZeroChips.length === 0 ? (
@@ -73,7 +73,7 @@ const ExtractionSidebar: React.FC<ExtractionSidebarProps> = ({ chips, onDragStar
                         borderRadius: 'var(--radius-sm)'
                     }}>
                         No se encontraron valores.
-                        sube un documento para comenzar.
+                        Sube un documento para comenzar.
                     </div>
                 ) : (
                     nonZeroChips.map(chip => (
@@ -82,7 +82,7 @@ const ExtractionSidebar: React.FC<ExtractionSidebarProps> = ({ chips, onDragStar
                             layout
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            whileHover={{ scale: 1.02, x: 2, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                            whileHover={{ scale: 1.02, x: 2 }}
                             drag
                             dragSnapToOrigin
                             dragListener={true}
@@ -97,43 +97,46 @@ const ExtractionSidebar: React.FC<ExtractionSidebarProps> = ({ chips, onDragStar
                                 borderRadius: 'var(--radius-sm)',
                                 padding: '10px 12px',
                                 display: 'flex',
-                                alignItems: 'center',
-                                gap: '10px',
+                                flexDirection: 'column',
+                                gap: '8px',
                                 cursor: 'grab',
                                 userSelect: 'none',
                                 position: 'relative',
-                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                transition: 'all 0.2s'
                             }}
                         >
-                            <div className="drag-handle" style={{ color: 'var(--text-muted)', cursor: 'grab' }}>
-                                <GripVertical size={14} />
-                            </div>
-
-                            <div style={{ flex: 1, overflow: 'hidden' }}>
-                                <div style={{
-                                    fontSize: '11px',
-                                    color: 'var(--text-muted)',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.5px',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    fontWeight: 600,
-                                    marginBottom: '2px'
-                                }}>
-                                    {chip.label || 'Valor Detectado'}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <div className="drag-handle" style={{ color: 'var(--text-muted)', cursor: 'grab' }}>
+                                    <GripVertical size={14} />
                                 </div>
-                                <div style={{
-                                    fontSize: '14px',
-                                    color: 'var(--accent-green)',
-                                    fontWeight: '700',
-                                    fontFamily: 'monospace',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '4px'
-                                }}>
-                                    <BadgeDollarSign size={12} strokeWidth={3} />
-                                    {chip.value.toLocaleString()}
+
+                                <div style={{ flex: 1, overflow: 'hidden' }}>
+                                    <div style={{
+                                        fontSize: '11px',
+                                        color: 'var(--text-muted)',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        fontWeight: 600,
+                                        marginBottom: '2px'
+                                    }}>
+                                        {chip.label || 'Valor Detectado'}
+                                    </div>
+                                    <div style={{
+                                        fontSize: '14px',
+                                        color: 'var(--accent-green)',
+                                        fontWeight: '700',
+                                        fontFamily: 'monospace',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '4px'
+                                    }}>
+                                        <BadgeDollarSign size={12} strokeWidth={3} />
+                                        {chip.value.toLocaleString()}
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
